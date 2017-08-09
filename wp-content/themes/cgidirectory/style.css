@@ -1,0 +1,722 @@
+/*
+Theme Name: CGI Directory
+Theme URI: http://cgicompany.com/
+Author: CGI Communications
+Author URI: http://cgicompany.com/
+Description: Theme created for displaying CGI Communications Employee Directory
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: LICENSE
+Text Domain: cgidirectory
+Tags:
+
+CGI Directory is based on Underscores http://underscores.me/, (C) 2012-2015 Automattic, Inc.
+Underscores is distributed under the terms of the GNU GPL v2 or later.
+
+*/
+
+
+/* =============================================================
+	General Styles  
+   ============================================================= */
+
+body{
+    font-family: 'Montserrat', sans-serif;
+	color:#050708;
+}
+
+
+/* Text meant only for screen readers */
+.screen-reader-text {
+	clip: rect(1px, 1px, 1px, 1px);
+	position: absolute !important;
+}
+
+.screen-reader-text:hover,
+.screen-reader-text:active,
+.screen-reader-text:focus {
+	background-color: #f1f1f1;
+	box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+	clip: auto !important;
+	color: #21759b;
+	display: block;
+	font-size: 14px;
+	font-weight: bold;
+	height: auto;
+	left: 5px;
+	line-height: normal;
+	padding: 15px 23px 14px;
+	text-decoration: none;
+	top: 5px;
+	width: auto;
+	z-index: 100000; /* Above WP toolbar */
+	
+	-webkit-border-radius:3px;  
+	-moz-border-radius:3px;
+	border-radius: 3px;
+}
+
+.site-description{
+	text-transform: uppercase;
+	letter-spacing: 1.5px;
+}
+
+a{
+	color:#19c1dd;
+}
+
+.btn .fa{
+	margin-right:10px;
+}
+
+.btn, .panel, .panel-heading{
+	border-radius: 3px;
+	text-decoration: none;
+}
+
+.btn-default{
+	border-color:#19c1dd;
+	color:#19c1dd;
+}
+
+.btn-default:hover{
+	border-color:#000;
+	text-decoration: none;
+}
+
+.panel-info{
+	border-color:#050708;
+}
+
+.panel-info > .panel-heading{
+	background: #050708;
+}
+
+
+
+/* animated panel collapse icons*/
+.panel-group {
+    margin-bottom: 25px;
+}
+.panel-group .panel-heading {
+    padding: 0;
+}
+
+.panel-heading a{
+	padding:15px;
+	color: #fff;
+	display: block;
+	outline: none;
+}
+
+.panel-info .panel-heading a:hover,
+.panel-info .panel-heading a:focus {
+	text-decoration: none;
+    background: rgba(255, 255, 255, 0.15) none repeat scroll 0 0;
+}
+
+.panel-heading a .fa {
+	color:#19C1DD;
+    margin-right: 5px;
+    transition: all 0.35s ease 0s;
+}
+a.collapsed .fa {
+    transform: rotate(-90deg);
+}
+
+
+/* animation speed */
+#table-people tr, a{
+	transition: all 0.5s ease;
+}
+
+
+h1.site-title{
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.site-header, .site-footer{
+	padding-top: 1em;
+	padding-bottom: 1em;
+}
+
+.site-header{
+	background:#19c1dd;
+	color:#050708;
+	text-align: center;
+
+	-webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, .2);
+	-moz-box-shadow:    0px 0px 10px 0px rgba(0, 0, 0, .2);
+	box-shadow:         0px 0px 10px 0px rgba(0, 0, 0, .2);
+}
+
+.site-footer{
+	background:#000;
+	color:#fff;
+	text-align: center;
+	font-size: .8em;
+	z-index: -1;
+
+	-webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, .2);
+	-moz-box-shadow:    0px 0px 10px 0px rgba(0, 0, 0, .2);
+	box-shadow:         0px 0px 10px 0px rgba(0, 0, 0, .2);
+
+}
+
+nav.navbar{
+	margin-bottom: 0;
+	border:0;
+}
+
+
+#table-people .title, table.table{
+	margin-top: 1.5em;
+}
+
+
+html, body {
+    height: 100%; 
+}
+#page {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+#page #content {
+    flex: 1 1 auto;
+}
+
+.site-content{
+	padding-top:3em;
+}
+
+#table-people_wrapper{
+	margin-top: 4em;
+}
+
+caption{
+	font-size: 20px;
+	letter-spacing: 1.5px;
+    text-transform: uppercase;
+	color: #000;
+	padding: 0 8px 15px;
+}
+
+#table-people td, table.table td{
+	vertical-align: middle !important;
+}
+
+#table-people a, table.table a{
+	outline: none;
+}
+
+#table-people .title h4, table.table .title h4{
+	margin:0;
+}
+
+#table-people .title p{
+	margin-top: 15px;
+}
+
+#table-people .thumb{
+	height:140px;
+	width:104px;
+	background: #ccc;
+	overflow: hidden;
+	border-radius: 3px;
+	display: block;
+	background-position: center center;
+	margin-right: 1.25em;
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+
+#table-people .thumb img{
+	max-height: 100%;
+	width:auto;
+}
+
+
+
+.email-link span{ display: none; }
+.email-link span + span{ display: inline; }
+
+#accordion .table td{
+	display: block;
+	border:0;
+	padding: 0 8px;
+}
+#accordion .table .title{
+	border-top: 3px solid #ddd;
+	padding-top: 10px;
+	margin-top:10px;
+}
+#accordion .prefix, 
+#table-people .prefix{
+	display: inline-block;
+	margin-right:10px;
+}
+
+
+#table-people td{
+	display: block;
+	padding: 0 8px;
+	border:0;
+	text-align: center;
+}
+
+#table-people td:first-child{
+	border-top:3px solid #ccc;
+	padding-top: 15px;
+	margin-top: 15px;
+}
+
+#table-people .thumb{
+	margin-right: auto;
+	margin-left:auto;
+}
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) { 
+
+
+
+	#table-people .prefix{
+		display: none;
+	}
+
+	#table-people td{
+	display: table-cell;
+	padding: 8px;
+	border-top:1px solid #ccc;
+}
+
+	#table-people td:first-child{
+		margin-top: 0;
+		text-align: left;
+	border-top:1px solid #ccc;
+	}
+
+	#table-people .thumb{
+		margin-right: 1.25em;
+		margin-left: 0;
+	}
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+	.site-header{
+		text-align: left;
+	}
+
+	.site-description, .site-footer{
+		text-align: right;
+	}
+
+	#table-people .thumb{
+		float:left;
+	}
+
+	#accordion .table td{
+		display: table-cell;
+	}
+	#accordion .prefix{
+		display: none;
+	}
+	#accordion .table td{
+		border-top: 1px solid #ddd;
+		padding: 8px;
+	}
+	#accordion .table .title{
+		margin-top:0;
+		padding-top: 0;
+		border:0;
+	}
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) { 
+
+	.email-link span{ display: inline; }
+	.email-link span + span{ display: none; }
+}
+
+
+
+
+/**** HIERARCHY STYLING ****/
+.hierarchy .page-header {
+	border-bottom: 0px;
+	margin-top: 0px;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.flex-col {
+  flex-direction: column;
+}
+
+
+.hierarchy {
+    text-align: center;
+}
+.hierarchy h3, .hierarchy h4 {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+
+/* BUTTONS */
+.hierarchy-button {
+    background: #e2e2e2;
+    padding: 10px;
+
+}
+
+.current {
+  background: #19C1DD;
+
+}
+.shown {
+	display: block;
+}
+
+.hiddne {
+	display: none;
+}
+
+.hierarchy-button:hover {
+  cursor: pointer;
+	background: #19C1DD;
+}
+@media (max-width: 595px) {
+	.page-title h2 {
+		font-size: 24px;
+	}
+	.hierarchy .page-title h3 {
+		font-size: 16px;
+	}
+}
+@media (max-width: 576px){
+	.ell-nxt .hierarchy-button {
+		min-height: 115px;
+	}
+}
+@media (max-width: 415px){
+	.ell-nxt .hierarchy-button {
+		min-height: 150px;
+	}
+}
+
+
+ul {
+    -webkit-padding-start: 0px;
+}
+
+
+.president {
+    vertical-align: top;
+    margin-top: 15px;
+    display: block;
+    border-bottom: solid 5px;
+}
+.tree {
+	display: block;
+	padding: 0px;
+}
+.tree-ul {
+    padding: 15px;
+	border-left: solid 5px #ccc;
+}
+.tree ul { 
+	position: relative;
+	transition: all 0.5s;
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+}
+.branch {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.tree li {
+	text-align: center;
+	list-style-type: none;
+	position: relative;
+	padding: 20px 5px 0 5px;
+	display: inline-block;
+	transition: all 0.5s;
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+	vertical-align: top;
+}
+
+.tier-4 li{
+	display: block;
+}
+.heading {
+	display: inline-block;
+    font-style: italic;
+}
+
+.sub-heading {
+	font-size: 16px;
+}
+.group-heading {
+	border-bottom: solid 2px;
+}
+
+.tier-3-4 {
+  padding: 0px;
+}
+
+.tier-4 {
+  border-left: solid 5px #ccc;
+  margin-top: 10px;
+  margin-bottom: 10px;
+	margin-left: -1px;
+}
+
+.blank {
+	min-height: 300px;
+}
+
+.hierarchy h5 {
+	font-size: 16px;
+}
+.separating-space {
+	width: 50px;
+}
+
+
+
+@media (max-width: 992px){
+	.hierarchy h3 {
+		font-size: 20px;
+	}
+	.hierarchy h4 {
+		font-size: 16px;
+	}
+	.hierarchy h5, .sub-heading {
+		font-size: 14px;
+		margin-bottom: 5px;
+		margin-top: 5px;
+	}
+}
+
+@media (max-width: 768px){
+	.hierarchy h3 {
+		font-size: 18px;
+	}
+	.hierarchy h4 {
+		font-size: 14px;
+	}
+	.hierarchy h5, .sub-heading {
+		font-size: 12px;
+	}
+	.tree {
+    display: block;
+    padding-right: 0px;
+	}
+}
+
+
+
+/* Styling / Lines */
+
+/* horizontal lines connecting sections */
+.tree .tier-2::before, .tree .tier-2::after, .tree .tier-3::before, .tree .tier-3::after{
+    content: '';
+    position: absolute;
+    border-bottom: 5px solid #ccc;
+    width: 15%;
+    right: 85%;
+    height: 50%;
+    bottom: 50%;
+} 
+.tree .tier-2::after, .tree .tier-3::after{
+	left: 85%;
+}
+@media (max-width: 992px){
+		.tree .tier-2::before, .tree .tier-2::after, .tree .tier-3::before, .tree .tier-3::after{
+    width: 10%;
+    right: 90%;
+} 
+.tree .tier-2::after, .tree .tier-3::after{
+	left: 90%;
+}
+}
+
+
+/* removes :after connecting line if no children */
+.no-children::after {
+  content: none!important;
+  width: 0%!important;
+}
+
+/* for tier-3 empty sections (like before sales execs) creates 100% line connector */
+.tree .empty::after, .tree .empty::before{
+	width: 50%;
+}
+.tree .empty::after {
+  left: 50%;
+}
+.tree .empty::before {
+  right: 50%;
+}
+
+/* creates tier 3 left bracket */
+.tier-x {
+  position: relative;
+}
+.tier-x::before {
+  	content: '';
+	position: absolute; 
+    top: 0; 
+    right: 50%;
+    border-left: 5px solid #ccc;
+	width: 50%; 
+    height: 100%;
+} /* if middle element, line is full height */
+.tier-x:first-child:before {
+  height: 50%;
+  top: 50%;
+} /* if top element, removes line above */
+.tier-x:last-child:before {
+  height: 50%;
+  bottom: 50%;
+} /* if bottom element, removes line below */
+.tier-x:only-child:before {
+  height: 0%;
+} /* if only element, removes bracket altogether */
+
+
+
+
+/* tier 4 bracket - uses left border, and this adds bracket notches */
+.tree .tier-4::before, .tree .tier-4::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 95%;
+    border-top: 5px solid #ccc;
+    border-bottom: 5px solid #ccc;
+    width: 5%;
+    height: 100%;
+}
+
+/* if only one element/person, no bracket */
+.tree .tier-2:only-child::after, .tree .tier-2:only-child::before {
+	display: none;
+}
+
+.tree .tier-2:only-child{ 
+  padding-top: 0;
+}
+
+
+/* Buttons */
+.ceo {
+	margin-bottom: 40px;
+}
+.ell-nxt {
+    margin-top: 10px;
+}
+.cgi::after {
+    content: '';
+    position: absolute;
+    border-right: 5px solid #ccc;
+    width: 50%;
+    right: 50%;
+    height: 25px;
+    top: 100%;
+}
+
+.ell::before {
+    content: '';
+    position: absolute;
+    border-left: 5px solid #ccc;
+    width: 50%;
+    left: 50%;
+    height: 30px;
+    bottom: 100%;
+    border-top: solid 5px #ccc;
+}
+.nxt::before {
+    content: '';
+    position: absolute;
+    border-right: 5px solid #ccc;
+    width: 50%;
+    right: 50%;
+    height: 30px;
+    bottom: 100%;
+    border-top: 5px solid #ccc;
+}
+/*.ell::after {
+    content: '';
+    position: absolute;
+    border-right: 5px solid #ccc;
+    width: 50%;
+    right: 50%;
+    height: 25%;
+    top: 100%;
+}
+.nxt::after {
+    content: '';
+    position: absolute;
+    border-right: 5px solid #ccc;
+    width: 50%;
+    right: 50%;
+    height: 25%;
+    top: 100%;
+}*/
+#ELL-tree::before {
+    content: '';
+    position: absolute;
+    border-bottom: 5px solid #ccc;
+    border-right: 5px solid #ccc;
+    height: 29px;
+    width: 29%;
+    right: 71%;
+    bottom: 100%;
+}
+@media (max-width: 992px){
+	#ELL-tree::before {
+
+    width: 25%;
+    right: 75%;
+}
+}
+
+#CGI-tree::before {
+    content: '';
+    position: absolute;
+    border-bottom: 5px solid #ccc;
+    border-right: 5px solid #ccc;
+    width: 50%;
+    right: 50%;
+    height: 215px;
+    bottom: 100%;
+    z-index: -1;
+}
+#NXT-tree::before {
+    content: '';
+    position: absolute;
+    border-bottom: 5px solid #ccc;
+    border-right: 5px solid #ccc;
+    height: 29px;
+    width: 71%;
+    right: 29%;
+    bottom: 100%;
+}
+@media (max-width: 992px){
+	#NXT-tree::before {
+
+    width: 77%;
+    right: 23%;
+}
+}
