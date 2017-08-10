@@ -37,23 +37,26 @@
 				<?php if(!empty($tier3)){ 
 
 					foreach ($tier3 as $employee) {
-						$meta = get_metadata('post', $key->ID);
-						$job_title = $meta['employee_title_title'][0];
+						$meta = get_metadata('post', $employee->ID);
+						$position_title = $meta['employee_title_title'][0];
 						$slug=$employee->post_name;
 					    $supervisees = get_employees($slug); 
 					
 					?>
 						<div class="flex tier-3-4-row">
-						<?php if(!empty($supervisees)) { ?>
+							<?php if(!empty($supervisees)) { ?>
 							<div class="col-xs-6 tier-3">
 							<?php } else { ?>
 							<div class="col-xs-6 tier-3 no-children">
 							<?php } ?>
 								<h4> <?php echo get_the_title($employee);?></h4>
-								<h5 class="heading"><?php echo $job_title ?></h5>
+								<h5 class="heading"><?php echo $position_title ?></h5>
 							</div>
 							<?php if (!empty($supervisees)) { ?>
 								<div class="col-xs-6 tier-4">
+								<?php if ($position_title == "Director of Personnel") :?>
+								<h5 class="heading group-heading">Talent &amp; Recruitment</h5> 
+								<?php endif; ?>
 									<ul>
 										<?php get_name($supervisees); ?>
 									</ul>
@@ -73,8 +76,19 @@
 						<div class="flex tier-3-4-row">
 							<div class="col-xs-6 tier-3 empty"></div>
 							<div class="col-xs-6 tier-4">	
+							<?php if ($job_title == "Vice President and CFO") { ?>
+								<h5 class="heading group-heading">Admin &amp; Accounting</h5> 
+								<?php } ?>
 								<ul>
-									<?php get_name($tier4);?>
+									<?php 
+									if (count($tier4) == 1) {
+										$meta = get_metadata('post', $tier4[0]->ID);
+										$position = $meta['employee_title_title'][0];
+										echo '<h5 class="heading group-heading">' . $position . '</h5>';
+									}
+									get_name($tier4);
+									?>
+
 								</ul>
 							</div>
 						</div>
