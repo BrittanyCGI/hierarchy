@@ -12,6 +12,7 @@ $(document).ready(function() {
 		showHideTrees(this);
 	});
 
+$('.tier-4').has('.tier-3-4-row').removeClass('tier-4').addClass('no-padding');
 
 function showHideTrees(selector){
 	$('.current').removeClass('current');

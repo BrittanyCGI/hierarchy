@@ -478,7 +478,7 @@ ul {
   border-left: solid 5px #ccc;
   margin-top: 10px;
   margin-bottom: 10px;
-	margin-left: -1px;
+	/*margin-left: -1px;*/
 }
 
 .blank {
@@ -491,7 +491,9 @@ ul {
 .separating-space {
 	width: 50px;
 }
-
+.no-padding {
+	padding: 0px;
+}
 
 
 @media (max-width: 992px){
@@ -515,6 +517,9 @@ ul {
 	.hierarchy h4 {
 		font-size: 14px;
 	}
+	.hierarchy .tier-4 h4 {
+		font-size: 12px;
+	}
 	.hierarchy h5, .sub-heading {
 		font-size: 12px;
 	}
@@ -524,7 +529,22 @@ ul {
 	}
 }
 
-
+@media (max-width: 465px){
+	.tier-3-4-row .tier-3-4-row .tier-3::before {
+		right: 40%;
+	}
+	.tier-3-4-row .tier-3-4-row .tier-3::after {
+		width: 60%;
+	}
+	.tier-3-4-row .tier-3-4-row .empty::after {
+		left: 40%;
+	}
+}
+@media (max-width: 420px){
+	.tier-3-4-row .tier-3-4-row .tier-3::before {
+		right: 0%;
+	}
+}
 
 /* Styling / Lines */
 
@@ -569,7 +589,7 @@ ul {
   right: 50%;
 }
 .empty {
-	margin-left: -1px;
+	/*margin-left: -1px;*/
 }
 
 /* creates tier 3 left bracket */
