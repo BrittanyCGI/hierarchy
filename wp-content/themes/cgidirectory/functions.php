@@ -537,6 +537,45 @@ add_action( 'save_post', 'contact_information_save' );
 
 
 
+/* Hierarchy Functions */
+	function get_name($group){
+		foreach($group as $employee) {
+			echo '<h4>' . get_the_title($employee) . '</h4>';
+		}
+	};
+
+	function execs($group, $position_title){
+		if (!empty($group)) :?>
+			<div class="flex tier-3-4-row">
+				<div class="col-xs-4 tier-3 empty"></div>
+				<div class="col-xs-6 col-sm-4 tier-4 execs">
+					<h5 class="heading group-heading"><?php echo $position_title ?></h5>
+					<ul>
+						<?php get_name($group) ?>
+					</ul>
+				</div>
+				<div class="col-xs-2 col-sm-4 blank"></div>
+			</div>
+		<?php endif; 
+	}
+
+	function get_employees($slug){
+			return get_posts( 
+				array(
+				 'post_type' => 'employee',
+				 'supervisor' => "$slug",
+				 'posts_per_page'=>-1,
+			));
+	}
+
+	function slug($employee){
+		    $meta = get_metadata('post', $employee->ID);
+			$job_title = $meta['employee_title_title'][0];
+		    $slug=$employee->post_name;
+		    $supervisees = get_employees($slug);
+
+	}
+
 
 
 

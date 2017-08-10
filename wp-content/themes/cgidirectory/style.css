@@ -568,12 +568,15 @@ ul {
 .tree .empty::before {
   right: 50%;
 }
+.empty {
+	margin-left: -1px;
+}
 
 /* creates tier 3 left bracket */
-.tier-x {
+.tier-3-4-row {
   position: relative;
 }
-.tier-x::before {
+.tier-3-4-row::before {
   	content: '';
 	position: absolute; 
     top: 0; 
@@ -582,15 +585,15 @@ ul {
 	width: 50%; 
     height: 100%;
 } /* if middle element, line is full height */
-.tier-x:first-child:before {
+.tier-3-4-row:first-child:before {
   height: 50%;
   top: 50%;
 } /* if top element, removes line above */
-.tier-x:last-child:before {
+.tier-3-4-row:last-child:before {
   height: 50%;
   bottom: 50%;
 } /* if bottom element, removes line below */
-.tier-x:only-child:before {
+.tier-3-4-row:only-child:before {
   height: 0%;
 } /* if only element, removes bracket altogether */
 

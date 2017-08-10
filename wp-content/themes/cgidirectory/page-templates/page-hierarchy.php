@@ -43,7 +43,7 @@ get_header(); ?>
 			<div class="tree col-md-12 hidden" id="CGI-tree">
 				<ul class="tree-ul">
 
-					<?php get_template_part( 'template-parts/content-ell' ); ?>
+					<?php get_template_part( 'template-parts/content-cgi' ); ?>
 
 				</ul><!-- closing tag for #tree -->
 			</div><!-- closing tag for .tree -->
@@ -65,7 +65,7 @@ get_header(); ?>
 			<div class="tree col-md-12 hidden" id="NXT-tree">
 				<ul class="tree-ul">
 
-					<?php get_template_part( 'template-parts/content-ell' ); ?>
+					<?php get_template_part( 'template-parts/content-nxt' ); ?>
 
 				</ul><!-- closing tag for #tree -->
 			</div><!-- closing tag for .tree -->
