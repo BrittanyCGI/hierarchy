@@ -6,7 +6,7 @@
 		$media  = array();
 		$others = array();
 
-		$mediaTeam = get_employees('media');
+		$mediaTeam = get_employees('media'); // different slug b/c team has 2 mgrs
 
 		foreach($NXTtier2 as $employee){
 			
@@ -23,9 +23,11 @@
 		    	} else {
 		    		array_push($others, $employee);
 		    	}
-		    } ?>
+		    } // assign tier2 employees to arrays
 
-	    <?php foreach($vp as $employee) : 
+
+////// VP ROW /////
+		    foreach($vp as $employee) : 
 		    $meta = get_metadata('post', $employee->ID);
 			$job_title = $meta['employee_title_title'][0];
 		    $slug=$employee->post_name;
@@ -41,7 +43,7 @@
 					<div class="tier-3-4-row flex">
 						<div class="col-xs-6 col-sm-7 tier-3 empty"></div>
 						<div class="col-xs-6 col-sm-5 tier-4">
-							<h5 class="heading group-heading">Community</h5>
+							<h5 class="heading group-heading">Community Progams</h5> 
 							<ul>
 								<?php get_name($supervisees) ?>
 							</ul>
@@ -54,7 +56,7 @@
 
 			
 
-
+		<?php //// MEDIA bc there are 2 mgrs, DMCD is generated differently -- looping through DMCD leaders, and then looping through team separately ?>
 		<div class="row branch flex">
 			<div class="col-xs-1 tier-2 flex flex-col empty"></div>
 			<div class="col-xs-4 tier-2 ">
@@ -76,12 +78,14 @@
 			</div>
 		</div>
 
+
 				
 		<?php foreach ($others as $employee) :
 			    $meta = get_metadata('post', $employee->ID);
 				$job_title = $meta['employee_title_title'][0];
 			    $slug=$employee->post_name;
-			    $supervisees = get_employees($slug); ?>
+			    $supervisees = get_employees($slug); ?> 
+
 			<div class="row branch flex">
 				<div class="col-xs-1 tier-2 flex flex-col empty"></div>
 				<div class="col-xs-4 tier-2 ">
@@ -97,6 +101,21 @@
 							$job_title = $meta['employee_title_title'][0];
 						    $slug=$employee->post_name;
 						    $tier4 = get_employees($slug); 
+
+						    if ($job_title == 'Head Writer'){
+						    	$group_title = "Scriptwriters";
+						    } elseif ($job_title == 'Managing Videographer'){
+						    	$group_title = 'Videographers';
+						    } elseif ($job_title == 'Managing Producer') {
+						    	$group_title = 'Producers';
+						    } elseif ($job_title == 'Managing Editor') {
+						    	$group_title = 'Editors';
+						    } elseif ($job_title == 'Senior Client Development Manager') {
+						    	$group_title = 'Client Development Managers';
+						    } else {
+						    	$group_title = NULL;
+						    } 
+
 						?>
 					<div class="flex tier-3-4-row">
 						<div class="col-xs-6 col-sm-7 tier-3">
@@ -105,11 +124,11 @@
 						</div>
 
 					<?php 
-				    if (!empty($tier4)) : 
-				
-
-				    	?>
+				    if (!empty($tier4)) : ?>
 					    <div class="col-xs-6 col-sm-5 tier-4">
+					    	<?php if ($group_title){
+					    		echo "<h5 class=\"heading group-heading\"> $group_title </h5>";
+					    		} ?>
 					    	<?php foreach ($tier4 as $employee) {
 					    		$meta = get_metadata('post', $employee->ID);
 								$position = $meta['employee_title_title'][0];
