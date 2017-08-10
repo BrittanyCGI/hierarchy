@@ -35,7 +35,7 @@
 
 			<div class="row branch flex">
 				<div class="col-sm-4 col-xs-4 tier-2 flex flex-col">
-					<h3><?php echo get_the_title($employee);?></h3>
+					<h3><?php echo get_the_title($employee);?> <a href="../#<?php echo $slug ?>"><i class="fa fa-info-circle"></i></a></h3>
 					<h4 class="heading"><?php echo $job_title ?></h4>
 				</div>
 				<div class="col-xs-1 tier-3 empty"></div>
@@ -61,7 +61,8 @@
 			<div class="col-xs-1 tier-2 flex flex-col empty"></div>
 			<div class="col-xs-4 tier-2 ">
 				<?php foreach ($media as $employee) {
-					echo '<h3>' . get_the_title($employee) . '</h3>';
+					$slug=$employee->post_name;
+					echo '<h3>' . get_the_title($employee) . " <a href=\"../#$slug\"><i class=\"fa fa-info-circle\"></i></a></h3>";
 				} ?>
 					<h4 class="heading">Digital Media &amp; Creative Design Team Leaders</h4>
 			</div>
@@ -89,7 +90,7 @@
 			<div class="row branch flex">
 				<div class="col-xs-1 tier-2 flex flex-col empty"></div>
 				<div class="col-xs-4 tier-2 ">
-					<h3> <?php echo get_the_title($employee);?></h3>
+					<h3> <?php echo get_the_title($employee);?> <a href="../#<?php echo $slug ?>"> <i class="fa fa-info-circle"></i></a></h3>
 					<h4 class="heading"><?php echo $job_title ?></h4>
 				</div>
 				<div class="col-xs-7 tier-3-4">
@@ -119,7 +120,7 @@
 						?>
 					<div class="flex tier-3-4-row">
 						<div class="col-xs-6 col-sm-7 tier-3">
-							<h4><?php echo get_the_title($employee); ?></h4>
+							<h4><?php echo get_the_title($employee); echo " <a href=\"../#" . $slug . "\"><i class=\"fa fa-info-circle\"></i></a></h4>" ?>
 							<h5><?php echo $job_title ?></h5>
 						</div>
 
@@ -138,16 +139,16 @@
 					    	<div class="flex tier-3-4-row">
 					    		<div class="col-xs-1 empty tier-3"></div>
 					    		<div class="col-xs-11 tier-4">
-					    		<h4> <?php echo get_the_title($employee);?> : <span class="sub-heading"><?php echo $position ?></span></h4> 
+					    		<h4> <?php echo get_the_title($employee);?> : <span class="sub-heading"><?php echo $position ?></span>  <a href="../#<?php echo $slug ?>"><i class="fa fa-info-circle"></i></a></h4> 
 									<h5 class="heading group-heading">Account Associates</h5>
 									<ul>
 										<?php foreach ($tier5 as $key) {
-											echo '<h4>' . get_the_title($key) . '</h4>';
+											echo '<h4>' . get_the_title($key) . ' <a href="../#' . $slug .'"><i class="fa fa-info-circle"></i></a></h4>';
 										} ?>
 									</ul>
 									</div></div>
 							<?php else : ?>
-								<h4> <?php echo get_the_title($employee) ?> </h4>
+								<h4> <?php echo get_the_title($employee) ?> <a href="../#<?php echo $slug ?>"><i class="fa fa-info-circle"></i></a></h4>
 							<?php endif; } ?>
 
 					    </div>

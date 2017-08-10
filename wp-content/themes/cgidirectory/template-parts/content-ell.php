@@ -32,7 +32,7 @@
 				if (empty($sales_mgr) && empty($sales_execs) && empty($acct_execs) && empty($sales_team_leaders)) : ?>
 					<div class="row branch flex">
 						<div class="col-sm-3 col-xs-5 tier-2 flex flex-col no-children">
-							<h3><?php echo get_the_title($employee);?></h3>
+							<h3><?php echo get_the_title($employee);?> <a href="../#<?php echo $slug ?>"><i class="fa fa-info-circle"></i></a></h3>
 							<h4 class="heading"><?php echo $job_title ?></h4>
 						</div>
 						<div class="col-sm-9 col-xs-7 tier-3-4">
@@ -44,7 +44,7 @@
 					<div class="row branch flex">
 						<div class="col-xs-1 col-sm-3 tier-2 flex flex-col empty"></div>
 						<div class="col-xs-4 tier-2 ell-manager">
-							<h4> <?php echo get_the_title($employee);?></h4>
+							<h4> <?php echo get_the_title($employee);?> <a href="../#<?php echo $slug ?>"><i class="fa fa-info-circle"></i></a></h4>
 							<h5 class="heading"><?php echo $job_title ?></h5>
 						</div>
 						<div class="col-xs-7 col-sm-6 tier-3-4">
@@ -57,7 +57,7 @@
 									<div class="flex tier-3-4-row">
 										<div class="col-sm-3 col-xs-3 tier-3 empty"></div>
 										<div class="col-sm-9 col-xs-9 tier-4 sales-execs">
-											<h4> <?php echo get_the_title($employee);?> : <span class="sub-heading">Sales Associate Team Leader</span></h4> 
+											<h4> <?php echo get_the_title($employee);?> : <span class="sub-heading">Sales Associate Team Leader</span> <a href="../#<?php echo $slug ?>"> <i class="fa fa-info-circle"></i></a></h4> 
 											<h5 class="heading group-heading">Sales Associates</h5>
 											<ul>
 												<?php get_name($sales_assc) ?>
@@ -71,7 +71,7 @@
 				<?php else : ?>
 					<div class="row branch flex">
 						<div class="col-sm-3 col-xs-4 tier-2 flex flex-col">
-							<h3><?php echo get_the_title($employee);?></h3>
+							<h3><?php echo get_the_title($employee);?> <a href="../#<?php echo $slug ?>"><i class="fa fa-info-circle"></i></a></h3>
 							<h4 class="heading"><?php echo $job_title ?></h4>
 						</div>
 						<div class="col-sm-9 col-xs-8 tier-3-4">
@@ -98,7 +98,7 @@
 							?>
 							<div class="flex tier-3-4-row">
 								<div class="col-xs-4 tier-3 sales-mgr">
-										<h4> <?php echo get_the_title($employee);?></h4>
+										<h4> <?php echo get_the_title($employee);?><a href="../#<?php echo $slug ?>"> <i class="fa fa-info-circle"></i></a></h4>
 										<h5 class="heading">Sales Manager</h5>	
 								</div>
 								<div class="col-xs-6 col-sm-4 tier-4 acct-execs">

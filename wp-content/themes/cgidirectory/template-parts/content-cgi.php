@@ -27,7 +27,7 @@
 
 			<div class="row branch flex">
 				<div class="col-sm-4 col-xs-4 tier-2 flex flex-col">
-					<h3><?php echo get_the_title($employee);?></h3>
+					<h3><?php echo get_the_title($employee);?> <a href="../#<?php echo $slug ?>"> <i class="fa fa-info-circle"></i></a></h3>
 					<h4 class="heading"><?php echo $job_title ?></h4>
 				</div>
 				<div class="tier-3-4 col-xs-8">
@@ -49,7 +49,7 @@
 							<?php } else { ?>
 							<div class="col-xs-6 tier-3 no-children">
 							<?php } ?>
-								<h4> <?php echo get_the_title($employee);?></h4>
+								<h4> <?php echo get_the_title($employee);?> <a href="../#<?php echo $slug ?>"> <i class="fa fa-info-circle"></i></a></h4>
 								<h5 class="heading"><?php echo $position_title ?></h5>
 							</div>
 							<?php if (!empty($supervisees)) { ?>

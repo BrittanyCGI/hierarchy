@@ -540,7 +540,8 @@ add_action( 'save_post', 'contact_information_save' );
 /* Hierarchy Functions */
 	function get_name($group){
 		foreach($group as $employee) {
-			echo '<h4>' . get_the_title($employee) . '</h4>';
+			$slug=$employee->post_name;
+			echo '<h4>' . get_the_title($employee) . ' <a href="../#' . $slug .'"><i class="fa fa-info-circle"></i></a></h4>';
 		}
 	};
 
