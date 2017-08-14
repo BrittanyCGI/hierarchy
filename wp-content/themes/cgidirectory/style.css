@@ -495,10 +495,10 @@ ul {
 	padding: 0px;
 }
 
-.hierarchy .fa {
+.hierarchy a {
 	color: #ccc;
 }
-.hierarchy .fa:hover {
+.hierarchy a:hover {
 	color: #19C1DD;
 }
 
