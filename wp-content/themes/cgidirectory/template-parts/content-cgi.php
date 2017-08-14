@@ -23,7 +23,18 @@
 					array_push($tier4, $key);
 				}
 			}
-		    ?>
+		    
+
+		    if(empty($supervisees)): ?>
+
+			<div class="row branch flex">
+				<div class="col-sm-4 col-xs-4 tier-2 flex flex-col no-children">
+					<h3><?php echo get_the_title($employee);?> <a href="../#<?php echo $slug ?>"> <i class="fa fa-info-circle"></i></a></h3>
+					<h4 class="heading"><?php echo $job_title ?></h4>
+				</div>
+				<div class="tier-3-4 col-xs-8">
+
+		    <?php else : ?>
 
 			<div class="row branch flex">
 				<div class="col-sm-4 col-xs-4 tier-2 flex flex-col">
@@ -32,9 +43,9 @@
 				</div>
 				<div class="tier-3-4 col-xs-8">
 
+			<?php endif; 
 
-
-				<?php if(!empty($tier3)){ 
+				 if(!empty($tier3)){ 
 
 					foreach ($tier3 as $employee) {
 						$meta = get_metadata('post', $employee->ID);
