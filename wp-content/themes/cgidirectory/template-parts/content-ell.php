@@ -14,6 +14,8 @@
 			$acct_execs = array();
 			$sales_mgr = array();
 			$sales_team_leaders = array();
+			$mrkt_execs = array();
+			$mrkt_assc = array();
 
 
 			foreach ($supervisees as $post ) {
@@ -26,6 +28,10 @@
 					array_push($sales_mgr, $post);
 				} elseif ($position == 'Sales Associate Team Leader') {
 					array_push($sales_team_leaders, $post);
+				} elseif ($position == 'Marketing Executive') {
+					array_push($mrkt_execs, $post);
+				} elseif ($position == 'Marketing Associate') {
+					array_push($mrkt_assc, $post);
 				}
 			} // end foreach supervisees loop - add employees to arrays by job title
 
@@ -86,6 +92,12 @@
 
 					<!-- ACCT EXECUTIVES -->
 					<?php execs($acct_execs, 'Account Executives') ?>
+
+					<!-- MRKT EXECUTIVES -->
+					<?php execs($mrkt_execs, 'Marketing Executives') ?>
+
+					<!-- MRKT ASSOCIATES -->
+					<?php execs($mrkt_assoc, 'Marketing Associates') ?>
 					
 					
 
