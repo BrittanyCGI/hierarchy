@@ -102,6 +102,7 @@
 							$job_title = $meta['employee_title_title'][0];
 						    $slug=$employee->post_name;
 						    $tier4 = get_employees($slug); 
+						    $acct_mgr_check = strpos($job_title, 'Account Manager');
 
 						    if ($job_title == 'Head Writer'){
 						    	$group_title = "Scriptwriters";
@@ -113,13 +114,20 @@
 						    	$group_title = 'Editors';
 						    } elseif ($job_title == 'Senior Client Development Manager') {
 						    	$group_title = 'Client Development Managers';
-						    } else {
+						    } elseif ($acct_mgr_check !== false) {
+						    	$group_title = 'Account Managers';
+						    }
+						    else {
 						    	$group_title = NULL;
 						    } 
 
 						?>
 					<div class="flex tier-3-4-row">
+					<?php if(empty($tier4)) : ?>
+						<div class="col-xs-6 col-sm-7 tier-3 no-children">
+					<?php else : ?>
 						<div class="col-xs-6 col-sm-7 tier-3">
+					<?php endif; ?>
 							<h4><?php echo get_the_title($employee); echo " <a href=\"../#" . $slug . "\"><i class=\"fa fa-info-circle\"></i></a></h4>" ?>
 							<h5><?php echo $job_title ?></h5>
 						</div>
