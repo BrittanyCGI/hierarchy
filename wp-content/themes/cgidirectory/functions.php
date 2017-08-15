@@ -545,6 +545,17 @@ add_action( 'save_post', 'contact_information_save' );
 		}
 	};
 
+	function name_and_position($group){
+		foreach($group as $employee) {
+			$meta = get_metadata('post', $employee->ID);
+			$job_title = $meta['employee_title_title'][0];
+			$slug=$employee->post_name;
+			echo '<h5 class="heading group-heading">' . $job_title . '</h5>';
+			echo '<h4>' . get_the_title($employee) . ' <a href="../#' . $slug .'"><i class="fa fa-info-circle"></i></a></h4>';
+			
+		}
+	}
+
 	function execs($group, $position_title){
 		if (!empty($group)) :?>
 			<div class="flex tier-3-4-row">
@@ -553,6 +564,20 @@ add_action( 'save_post', 'contact_information_save' );
 					<h5 class="heading group-heading"><?php echo $position_title ?></h5>
 					<ul>
 						<?php get_name($group) ?>
+					</ul>
+				</div>
+				<div class="col-xs-2 col-sm-4 blank"></div>
+			</div>
+		<?php endif; 
+	}
+
+	function misc($group){
+		if (!empty($group)) :?>
+			<div class="flex tier-3-4-row">
+				<div class="col-xs-4 tier-3 empty"></div>
+				<div class="col-xs-6 col-sm-4 tier-4 execs">
+					<ul>
+						<?php name_and_position($group) ?>
 					</ul>
 				</div>
 				<div class="col-xs-2 col-sm-4 blank"></div>

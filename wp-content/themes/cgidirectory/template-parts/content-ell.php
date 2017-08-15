@@ -16,6 +16,8 @@
 			$sales_team_leaders = array();
 			$mrkt_execs = array();
 			$mrkt_assc = array();
+			$misc_tier3 = array();
+			$resrch = array();
 
 
 			foreach ($supervisees as $post ) {
@@ -32,10 +34,24 @@
 					array_push($mrkt_execs, $post);
 				} elseif ($position == 'Marketing Associate') {
 					array_push($mrkt_assc, $post);
+				}  else {
+					array_push($misc_tier3, $post);
 				}
 			} // end foreach supervisees loop - add employees to arrays by job title
 
-				if (empty($sales_mgr) && empty($sales_execs) && empty($acct_execs) && empty($sales_team_leaders)) : ?>
+
+				if ($job_title == 'Researcher') : ?> 
+					<div class="row branch flex">
+						<div class="col-xs-7 col-sm-8 tier-2 flex flex-col empty"></div>
+						<div class="col-xs-5 col-sm-4 tier-3-4">
+							<div class="flex tier-3-4-row">
+								<div class="col-xs-12 tier-4 sales-execs">
+									<h4> <?php echo get_the_title($employee);?> <a href="../#<?php echo $slug ?>"><i class="fa fa-info-circle"></i></a></h4>
+									<h5 class="heading"><?php echo $job_title ?></h5>
+								</div>
+							</div>
+
+				<?php elseif (empty($sales_mgr) && empty($sales_execs) && empty($acct_execs) && empty($sales_team_leaders) && empty($mrkt_assc) && empty($mrkt_execs)): ?>
 					<div class="row branch flex">
 						<div class="col-sm-3 col-xs-5 tier-2 flex flex-col no-children">
 							<h3><?php echo get_the_title($employee);?> <a href="../#<?php echo $slug ?>"><i class="fa fa-info-circle"></i></a></h3>
@@ -73,6 +89,8 @@
 							
 								<?php endforeach;} ?> <!-- endif sales team leaders + sales assc. section -->
 								
+				
+						
 
 				<?php else : ?>
 					<div class="row branch flex">
@@ -86,9 +104,6 @@
 				
 					<!-- SALES EXECUTIVES -->
 					<?php execs($sales_execs, 'Sales Executives') ?>
-					
-					
-					
 
 					<!-- ACCT EXECUTIVES -->
 					<?php execs($acct_execs, 'Account Executives') ?>
@@ -97,9 +112,10 @@
 					<?php execs($mrkt_execs, 'Marketing Executives') ?>
 
 					<!-- MRKT ASSOCIATES -->
-					<?php execs($mrkt_assoc, 'Marketing Associates') ?>
+					<?php execs($mrkt_assc, 'Marketing Associates') ?>
 					
-					
+					<!-- MISC TIER 3 -->
+					<?php misc($misc_tier3) ?>
 
 					<!-- SALES MANAGER + ACCOUNT EXECUTIVES -->
 					<?php if (!empty($sales_mgr)) {

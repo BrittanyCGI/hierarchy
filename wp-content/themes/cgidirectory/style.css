@@ -367,6 +367,7 @@ caption{
 .hierarchy h3, .hierarchy h4 {
   margin-top: 5px;
   margin-bottom: 5px;
+  z-index: 500;
 }
 
 
@@ -564,6 +565,7 @@ ul {
     right: 85%;
     height: 50%;
     bottom: 50%;
+
 } 
 .tree .tier-2::after, .tree .tier-3::after{
 	left: 85%;
