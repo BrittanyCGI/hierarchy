@@ -63,7 +63,30 @@
 					</div><!-- .site-branding -->
 				</div><!-- .col-md-6 -->
 				<div class="col-md-6">
-					<h4 class="site-description"><?php bloginfo( 'description' ); ?></h4>
+								
+					<nav class="navbar navbar-default" role="navigation">
+				        <div class="navbar-header">
+				            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+				                <span class="sr-only">Toggle navigation</span>
+				                <span class="icon-bar"></span>
+				                <span class="icon-bar"></span>
+				                <span class="icon-bar"></span>
+				            </button>
+				        </div>
+
+						<?php
+				            wp_nav_menu( array(
+				                'theme_location'    => 'primary',
+				                'depth'             => 2,
+				                'container'         => 'div',
+				                'container_class'   => 'collapse navbar-collapse navbar-ex1-collapse navbar-right',
+				                'menu_class'        => 'nav navbar-nav',
+				                'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
+				                'walker'            => new wp_bootstrap_navwalker())
+				            );
+				        ?>
+
+					</nav><!-- .site-navigation -->
 				</div>
 			</div><!-- .row -->
 		</div><!-- .container-flex -->

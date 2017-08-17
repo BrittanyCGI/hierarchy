@@ -51,6 +51,19 @@
 								</div>
 							</div>
 
+				<?php elseif (get_the_title($employee) == 'Marcello Piergrossi') : ?> 
+					<div class="row branch flex">
+						<div class="col-xs-4 col-sm-3 tier-2 flex flex-col empty"></div>
+						<div class="col-xs-8 col-sm-9 tier-3-4">
+							<div class="flex tier-3-4-row">
+								<div class="col-xs-4 tier-3 empty"></div>
+								<div class="col-xs-6 col-sm-4 tier-4 execs">
+									<h4> <?php echo get_the_title($employee);?> <a href="../#<?php echo $slug ?>"><i class="fa fa-info-circle"></i></a></h4>
+									<h5 class="heading"><?php echo $job_title ?></h5>
+								</div>
+								<div class="col-xs-2 col-sm-4 blank"></div>
+							</div>
+
 				<?php elseif (empty($sales_mgr) && empty($sales_execs) && empty($acct_execs) && empty($sales_team_leaders) && empty($mrkt_assc) && empty($mrkt_execs)): ?>
 					<div class="row branch flex">
 						<div class="col-sm-3 col-xs-5 tier-2 flex flex-col no-children">
@@ -112,7 +125,7 @@
 					<?php execs($mrkt_execs, 'Marketing Executives') ?>
 
 					<!-- MRKT ASSOCIATES -->
-					<?php execs($mrkt_assc, 'Marketing Associates') ?>
+					<?php assc($mrkt_assc, 'Marketing Associates') ?>
 					
 					<!-- MISC TIER 3 -->
 					<?php misc($misc_tier3) ?>

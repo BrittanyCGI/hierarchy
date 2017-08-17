@@ -60,6 +60,15 @@ body{
 	text-transform: uppercase;
 	letter-spacing: 1.5px;
 }
+.site-description a {
+	color: black;
+	text-decoration: none;
+}
+.site-description a:hover {
+	text-decoration: none;
+	color: #fff;
+}
+}
 
 a{
 	color:#19c1dd;
@@ -168,7 +177,22 @@ nav.navbar{
 	margin-bottom: 0;
 	border:0;
 }
+.navbar-default {
+    background-color: transparent;
+}
 
+.navbar-default .navbar-nav>li>a {
+    color: #050708;
+    text-transform: uppercase;
+    font-size: 18px;
+}
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
+    color: #fff;
+    background-color: transparent;
+    }
+.navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover {
+    color: #fff;
+}
 
 #table-people .title, table.table{
 	margin-top: 1.5em;

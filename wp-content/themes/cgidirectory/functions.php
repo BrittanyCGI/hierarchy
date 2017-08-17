@@ -571,6 +571,21 @@ add_action( 'save_post', 'contact_information_save' );
 		<?php endif; 
 	}
 
+
+	function assc($group, $position_title){
+		if (!empty($group)) :?>
+			<div class="flex tier-3-4-row">
+				<div class="col-xs-6 col-sm-7 tier-3 empty"></div>
+				<div class="col-xs-6 col-sm-5 tier-4 execs">
+					<h5 class="heading group-heading"><?php echo $position_title ?></h5>
+					<ul>
+						<?php get_name($group) ?>
+					</ul>
+				</div>
+			</div>
+		<?php endif; 
+	}
+
 	function misc($group){
 		if (!empty($group)) :?>
 			<div class="flex tier-3-4-row">
