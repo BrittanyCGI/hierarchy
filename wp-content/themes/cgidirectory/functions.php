@@ -127,6 +127,9 @@ function cgidirectory_scripts() {
 
 	//add hierarchy js
 	wp_enqueue_script('hierarchy-js', get_template_directory_uri().'/js/hierarchy.js', array('jquery') );
+
+	//add cookie plugin js
+	wp_enqueue_script('cookie-js', get_template_directory_uri().'/js/cookie.js', array('jquery') );
 }
 add_action( 'wp_enqueue_scripts', 'cgidirectory_scripts' );
 
