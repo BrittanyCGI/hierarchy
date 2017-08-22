@@ -16,7 +16,7 @@
 		    $supervisees = get_employees($slug);
 
 
-		    	if ($job_title == "Vice President"){
+		    	if (strpos($job_title, 'Vice President') !== false){
 		    		array_push($vp, $employee);
 		    	} elseif ($job_title == "Digital Media &amp; Creative Design Team Leader") {
 		    		array_push($media, $employee);
@@ -58,7 +58,7 @@
 
 		<?php //// MEDIA bc there are 2 mgrs, DMCD is generated differently -- looping through DMCD leaders, and then looping through team separately ?>
 		<div class="row branch flex">
-			<div class="col-xs-1 tier-2 flex flex-col empty"></div>
+			<div class="col-xs-3 tier-2 flex flex-col empty"></div>
 			<div class="col-xs-4 tier-2 ">
 				<?php foreach ($media as $employee) {
 					$slug=$employee->post_name;
@@ -66,10 +66,10 @@
 				} ?>
 					<h4 class="heading">Digital Media &amp; Creative Design Team Leaders</h4>
 			</div>
-			<div class="col-xs-7 tier-3-4">
+			<div class="col-xs-5 tier-3-4">
 				<div class="tier-3-4-row flex">
-					<div class="col-xs-6 col-sm-7 tier-3 empty"></div>
-					<div class="col-xs-6 col-sm-5 tier-4">
+					<div class="col-xs-4 col-sm-5 tier-3 empty"></div>
+					<div class="col-xs-8 col-sm-7 tier-4">
 						<h5 class="heading group-heading">Digital Media &amp; Creative Design</h5>
 						<ul>
 							<?php get_name($mediaTeam); ?>
