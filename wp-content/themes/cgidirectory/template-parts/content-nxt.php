@@ -56,57 +56,7 @@
 
 			
 
-		<?php //// MEDIA bc there are 2 mgrs, DMCD is generated differently -- looping through DMCD leaders, and then looping through team separately ?>
-		<div class="row branch flex">
-			<div class="col-xs-3 tier-2 flex flex-col empty"></div>
-			<div class="col-xs-4 tier-2 ">
-				<?php foreach ($media as $employee) {
-					$slug=$employee->post_name;
-					echo '<h3>' . get_the_title($employee) . " <a href=\"../#$slug\"><i class=\"fa fa-info-circle\"></i></a></h3>";
-				} ?>
-					<h4 class="heading">Digital Media &amp; Creative Design Team Leaders</h4>
-			</div>
-			<div class="col-xs-5 tier-3-4">
-
-
-
-			<?php 
-
-				$designers = array();
-				$writers = array();
-				$coordinators = array();
-				$google = array();
-				$social = array();
-				$specialists = array();
-				foreach ($mediaTeam as $employee) {
-					$meta = get_metadata('post', $employee->ID);
-					$job_title = $meta['employee_title_title'][0];
-
-					if (strpos($job_title, 'Designer') !== false){
-			    		array_push($designers, $employee);
-					} elseif (strpos($job_title, 'Writer') !== false) {
-						array_push($writers, $employee);
-					} elseif (strpos($job_title, 'Website Coordinator') !== false) {
-						array_push($coordinators, $employee);
-					} elseif (strpos($job_title, 'Google') !==false) {
-						array_push($google, $employee);
-					} elseif (strpos($job_title, 'Social') !== false) {
-						array_push($social, $employee);
-					} elseif (strpos($job_title, 'Specialist') !== false) {
-						array_push($specialists, $employee);
-					}
-				}
-
-				media($designers, 'Designers');
-				media($writers, 'Web/SEO Writers');
-				media($coordinators, 'Website Coordinators');
-				media($google, 'Google AdWords');
-				media($social, 'Social Media');
-				media($specialists, 'Web & SEO Specialists');
-					  ?>	
-
-			</div>
-		</div>
+		
 
 
 				
@@ -202,6 +152,61 @@
 			</div><!-- closing tag for row branch -->
 			
 		<?php endforeach; ?>
+
+
+
+
+		<?php //// MEDIA bc there are 2 mgrs, DMCD is generated differently -- looping through DMCD leaders, and then looping through team separately ?>
+		<div class="row branch flex">
+			<div class="col-xs-3 tier-2 flex flex-col empty"></div>
+			<div class="col-xs-4 tier-2 ">
+				<?php foreach ($media as $employee) {
+					$slug=$employee->post_name;
+					echo '<h3>' . get_the_title($employee) . " <a href=\"../#$slug\"><i class=\"fa fa-info-circle\"></i></a></h3>";
+				} ?>
+					<h4 class="heading">Digital Media &amp; Creative Design Team Leaders</h4>
+			</div>
+			<div class="col-xs-5 tier-3-4">
+
+
+
+			<?php 
+
+				$designers = array();
+				$writers = array();
+				$coordinators = array();
+				$google = array();
+				$social = array();
+				$specialists = array();
+				foreach ($mediaTeam as $employee) {
+					$meta = get_metadata('post', $employee->ID);
+					$job_title = $meta['employee_title_title'][0];
+
+					if (strpos($job_title, 'Designer') !== false){
+			    		array_push($designers, $employee);
+					} elseif (strpos($job_title, 'Writer') !== false) {
+						array_push($writers, $employee);
+					} elseif (strpos($job_title, 'Website Coordinator') !== false) {
+						array_push($coordinators, $employee);
+					} elseif (strpos($job_title, 'Google') !==false) {
+						array_push($google, $employee);
+					} elseif (strpos($job_title, 'Social') !== false) {
+						array_push($social, $employee);
+					} elseif (strpos($job_title, 'Specialist') !== false) {
+						array_push($specialists, $employee);
+					}
+				}
+
+				media($designers, 'Designers');
+				media($writers, 'Web/SEO Writers');
+				media($coordinators, 'Website Coordinators');
+				media($google, 'Google AdWords');
+				media($social, 'Social Media');
+				media($specialists, 'Web & SEO Specialists');
+					  ?>	
+
+			</div>
+		</div>
 
 
 
