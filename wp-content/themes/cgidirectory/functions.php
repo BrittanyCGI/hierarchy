@@ -620,7 +620,22 @@ add_action( 'save_post', 'contact_information_save' );
 
 	}
 
-
+	function media($group, $group_title) {
+		if (!empty($group)) :?>
+		<div class="tier-3-4-row flex">
+			<div class="col-xs-4 col-sm-5 tier-3 empty"></div>
+			<div class="col-xs-8 col-sm-7 tier-4">
+				<h5 class="heading group-heading"><?php echo $group_title ?></h5>
+				<ul>
+					<?php 
+						get_name($group);
+						
+						?>
+				</ul>
+			</div>
+		</div>
+	<?php endif;
+	}
 
 
 

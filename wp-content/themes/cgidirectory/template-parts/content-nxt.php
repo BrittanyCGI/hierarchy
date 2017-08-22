@@ -67,15 +67,44 @@
 					<h4 class="heading">Digital Media &amp; Creative Design Team Leaders</h4>
 			</div>
 			<div class="col-xs-5 tier-3-4">
-				<div class="tier-3-4-row flex">
-					<div class="col-xs-4 col-sm-5 tier-3 empty"></div>
-					<div class="col-xs-8 col-sm-7 tier-4">
-						<h5 class="heading group-heading">Digital Media &amp; Creative Design</h5>
-						<ul>
-							<?php get_name($mediaTeam); ?>
-						</ul>
-					</div>
-				</div>
+
+
+
+			<?php 
+
+				$designers = array();
+				$writers = array();
+				$coordinators = array();
+				$google = array();
+				$social = array();
+				$specialists = array();
+				foreach ($mediaTeam as $employee) {
+					$meta = get_metadata('post', $employee->ID);
+					$job_title = $meta['employee_title_title'][0];
+
+					if (strpos($job_title, 'Designer') !== false){
+			    		array_push($designers, $employee);
+					} elseif (strpos($job_title, 'Writer') !== false) {
+						array_push($writers, $employee);
+					} elseif (strpos($job_title, 'Website Coordinator') !== false) {
+						array_push($coordinators, $employee);
+					} elseif (strpos($job_title, 'Google') !==false) {
+						array_push($google, $employee);
+					} elseif (strpos($job_title, 'Social') !== false) {
+						array_push($social, $employee);
+					} elseif (strpos($job_title, 'Specialist') !== false) {
+						array_push($specialists, $employee);
+					}
+				}
+
+				media($designers, 'Designers');
+				media($writers, 'Web/SEO Writers');
+				media($coordinators, 'Website Coordinators');
+				media($google, 'Google AdWords');
+				media($social, 'Social Media');
+				media($specialists, 'Web & SEO Specialists');
+					  ?>	
+
 			</div>
 		</div>
 
