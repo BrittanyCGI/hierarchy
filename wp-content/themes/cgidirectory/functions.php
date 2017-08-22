@@ -609,6 +609,8 @@ add_action( 'save_post', 'contact_information_save' );
 				 'post_type' => 'employee',
 				 'supervisor' => "$slug",
 				 'posts_per_page'=>-1,
+				 'orderby'=> 'date',
+				 'order'=> 'ASC',
 			));
 	}
 
@@ -629,7 +631,7 @@ add_action( 'save_post', 'contact_information_save' );
 				<ul>
 					<?php 
 						get_name($group);
-						
+
 						?>
 				</ul>
 			</div>

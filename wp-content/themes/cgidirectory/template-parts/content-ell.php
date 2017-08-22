@@ -39,32 +39,9 @@
 				}
 			} // end foreach supervisees loop - add employees to arrays by job title
 
+				if(strpos($job_title, 'Vice President') !== false) : ?>
 
-				if ($job_title == 'Researcher') : ?> 
-					<div class="row branch flex">
-						<div class="col-xs-7 col-sm-8 tier-2 flex flex-col empty"></div>
-						<div class="col-xs-5 col-sm-4 tier-3-4">
-							<div class="flex tier-3-4-row">
-								<div class="col-xs-12 tier-4 sales-execs">
-									<h4> <?php echo get_the_title($employee);?> <a href="../#<?php echo $slug ?>"><i class="fa fa-info-circle"></i></a></h4>
-									<h5 class="heading"><?php echo $job_title ?></h5>
-								</div>
-							</div>
-
-				<?php elseif (get_the_title($employee) == 'Marcello Piergrossi') : ?> 
-					<div class="row branch flex">
-						<div class="col-xs-4 col-sm-3 tier-2 flex flex-col empty"></div>
-						<div class="col-xs-8 col-sm-9 tier-3-4">
-							<div class="flex tier-3-4-row">
-								<div class="col-xs-4 tier-3 empty"></div>
-								<div class="col-xs-6 col-sm-4 tier-4 execs">
-									<h4> <?php echo get_the_title($employee);?> <a href="../#<?php echo $slug ?>"><i class="fa fa-info-circle"></i></a></h4>
-									<h5 class="heading"><?php echo $job_title ?></h5>
-								</div>
-								<div class="col-xs-2 col-sm-4 blank"></div>
-							</div>
-
-				<?php elseif (empty($sales_mgr) && empty($sales_execs) && empty($acct_execs) && empty($sales_team_leaders) && empty($mrkt_assc) && empty($mrkt_execs)): ?>
+					<?php if (empty($sales_mgr) && empty($sales_execs) && empty($acct_execs) && empty($sales_team_leaders) && empty($mrkt_assc) && empty($mrkt_execs)): ?>
 					<div class="row branch flex">
 						<div class="col-sm-3 col-xs-5 tier-2 flex flex-col no-children">
 							<h3><?php echo get_the_title($employee);?> <a href="../#<?php echo $slug ?>"><i class="fa fa-info-circle"></i></a></h3>
@@ -72,49 +49,17 @@
 						</div>
 						<div class="col-sm-9 col-xs-7 tier-3-4">
 				<!-- if tier 2 has no children, this adds no-children class to remove :after line -->
-
-
-				<?php elseif ($job_title == "ELL Sales Associate Manager") : ?>
-
-					<div class="row branch flex">
-						<div class="col-xs-1 col-sm-3 tier-2 flex flex-col empty"></div>
-						<div class="col-xs-4 tier-2 ell-manager">
-							<h4> <?php echo get_the_title($employee);?> <a href="../#<?php echo $slug ?>"><i class="fa fa-info-circle"></i></a></h4>
-							<h5 class="heading"><?php echo $job_title ?></h5>
-						</div>
-						<div class="col-xs-7 col-sm-6 tier-3-4">
-							<?php if (!empty($sales_team_leaders)) {
-								foreach($sales_team_leaders as $employee): 
-									    $slug=$employee->post_name;
-									    $sales_assc_slug=$slug;
-									    $sales_assc = get_employees($sales_assc_slug);
-									?>
-									<div class="flex tier-3-4-row">
-										<div class="col-sm-3 col-xs-3 tier-3 empty"></div>
-										<div class="col-sm-9 col-xs-9 tier-4 sales-execs">
-											<h4> <?php echo get_the_title($employee);?> : <span class="sub-heading">Sales Associate Team Leader</span> <a href="../#<?php echo $slug ?>"> <i class="fa fa-info-circle"></i></a></h4> 
-											<h5 class="heading group-heading">Sales Associates</h5>
-											<ul>
-												<?php get_name($sales_assc) ?>
-											</ul>
-										</div>
-									</div>
-							
-								<?php endforeach;} ?> <!-- endif sales team leaders + sales assc. section -->
-								
 				
-						
-
-				<?php else : ?>
+					<?php else : ?>
 					<div class="row branch flex">
 						<div class="col-sm-3 col-xs-4 tier-2 flex flex-col">
 							<h3><?php echo get_the_title($employee);?> <a href="../#<?php echo $slug ?>"><i class="fa fa-info-circle"></i></a></h3>
 							<h4 class="heading"><?php echo $job_title ?></h4>
 						</div>
 						<div class="col-sm-9 col-xs-8 tier-3-4">
-				<?php endif; ?>
+					<?php endif; ?>
 
-				
+
 					<!-- SALES EXECUTIVES -->
 					<?php execs($sales_execs, 'Sales Executives') ?>
 
@@ -151,6 +96,83 @@
 								<div class="col-xs-2 col-sm-4 blank"></div>
 							</div>
 					<?php endforeach;} ?><!-- endif sales manager + account execs section -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+				<?php elseif ($job_title == 'Researcher') : ?> 
+					<div class="row branch flex">
+						<div class="col-xs-7 col-sm-8 tier-2 flex flex-col empty"></div>
+						<div class="col-xs-5 col-sm-4 tier-3-4">
+							<div class="flex tier-3-4-row">
+								<div class="col-xs-12 tier-4 sales-execs">
+									<h4> <?php echo get_the_title($employee);?> <a href="../#<?php echo $slug ?>"><i class="fa fa-info-circle"></i></a></h4>
+									<h5 class="heading"><?php echo $job_title ?></h5>
+								</div>
+							</div>
+
+				<?php elseif (get_the_title($employee) == 'Marcello Piergrossi') : ?> 
+					<div class="row branch flex">
+						<div class="col-xs-4 col-sm-3 tier-2 flex flex-col empty"></div>
+						<div class="col-xs-8 col-sm-9 tier-3-4">
+							<div class="flex tier-3-4-row">
+								<div class="col-xs-4 tier-3 empty"></div>
+								<div class="col-xs-6 col-sm-4 tier-4 execs">
+									<h4> <?php echo get_the_title($employee);?> <a href="../#<?php echo $slug ?>"><i class="fa fa-info-circle"></i></a></h4>
+									<h5 class="heading"><?php echo $job_title ?></h5>
+								</div>
+								<div class="col-xs-2 col-sm-4 blank"></div>
+							</div>
+
+
+
+
+
+				<?php elseif ($job_title == "ELL Sales Associate Manager") : ?>
+
+					<div class="row branch flex">
+						<div class="col-xs-1 col-sm-3 tier-2 flex flex-col empty"></div>
+						<div class="col-xs-4 tier-2 ell-manager">
+							<h4> <?php echo get_the_title($employee);?> <a href="../#<?php echo $slug ?>"><i class="fa fa-info-circle"></i></a></h4>
+							<h5 class="heading"><?php echo $job_title ?></h5>
+						</div>
+						<div class="col-xs-7 col-sm-6 tier-3-4">
+							<?php if (!empty($sales_team_leaders)) {
+								foreach($sales_team_leaders as $employee): 
+									    $slug=$employee->post_name;
+									    $sales_assc_slug=$slug;
+									    $sales_assc = get_employees($sales_assc_slug);
+									?>
+									<div class="flex tier-3-4-row">
+										<div class="col-sm-3 col-xs-3 tier-3 empty"></div>
+										<div class="col-sm-9 col-xs-9 tier-4 sales-execs">
+											<h4> <?php echo get_the_title($employee);?> : <span class="sub-heading">Sales Associate Team Leader</span> <a href="../#<?php echo $slug ?>"> <i class="fa fa-info-circle"></i></a></h4> 
+											<h5 class="heading group-heading">Sales Associates</h5>
+											<ul>
+												<?php get_name($sales_assc) ?>
+											</ul>
+										</div>
+									</div>
+							
+								<?php endforeach;} ?> <!-- endif sales team leaders + sales assc. section -->
+								
+				
+						
+
+				
+				<?php endif; ?>
+
+				
+
 
 
 					<!-- SALES ASSC. TEAM LEADERS + SALES ASSOCIATES -->
