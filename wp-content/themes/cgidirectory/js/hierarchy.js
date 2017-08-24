@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
 
-	if (Cookies.get('NXT') == undefined && Cookies.get('ELL') == undefined){
+	if (Cookies.get('NXT') == undefined && Cookies.get('ELL') == undefined && Cookies.get('SNP') == undefined){
 	Cookies.set('CGI', true);
 	}
 
@@ -12,6 +12,7 @@ $(document).ready(function() {
 		Cookies.set('NXT', true, { expires: 3 });
 		Cookies.set('CGI', false, { expires: 3 });
 		Cookies.set('ELL', false, { expires: 3 });
+		Cookies.set('SNP', false, {expires: 3});
 	});
 
 	$('#ELL').on('click', function(){
@@ -19,11 +20,21 @@ $(document).ready(function() {
 		Cookies.set('ELL', true, { expires: 3 });
 		Cookies.set('CGI', false, { expires: 3 });
 		Cookies.set('NXT', false, { expires: 3 });
+		Cookies.set('SNP', false, {expires: 3});
 	});
 
 	$('#CGI').on('click', function(){
 		showHideTrees(this);
 		Cookies.set('CGI', true, { expires: 3 });
+		Cookies.set('NXT', false, { expires: 3 });
+		Cookies.set('ELL', false, { expires: 3 });
+		Cookies.set('SNP', false, {expires: 3});
+	});
+
+	$('#SNP').on('click', function(){
+		showHideTrees(this);
+		Cookies.set('SNP', true, { expires: 3 });
+		Cookies.set('CGI', false, { expires: 3 });
 		Cookies.set('NXT', false, { expires: 3 });
 		Cookies.set('ELL', false, { expires: 3 });
 	});
@@ -50,6 +61,9 @@ else if(Cookies.get('ELL') == 'true'){
 } 
 else if(Cookies.get('NXT') == 'true'){
     $('#NXT').click();
+}
+else if(Cookies.get('SNP') == 'true'){
+    $('#SNP').click();
 }
 
 });

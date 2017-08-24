@@ -41,11 +41,11 @@ get_header(); ?>
 					<div class="page-title col-xs-6 col-md-5 nxt frank">
 						<h2>Frank Buono <a href="../#frank-buono"><i class="fa fa-info-circle"></i></a></h2>
 
-						<div class="hierarchy-button col-xs-6" id="NXT">
+						<div class="hierarchy-button col-sm-9 col-xs-7" id="NXT">
 							<h3>President | Next! Ad Agency</h3>
 						</div>
-						<div class="hierarchy-button col-xs-6" id="SNP">
-							<h3>SnapMagic Team Building | SnapNation</h3>
+						<div class="hierarchy-button col-sm-3 col-xs-5" id="SNP">
+							<h3>Snap Nation</h3>
 						</div>
 					
 					</div>
