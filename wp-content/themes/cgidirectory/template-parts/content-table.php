@@ -52,7 +52,19 @@
 	<tbody>
 		
 <?php
-	$args = array( 'post_type' => 'employee','numberposts' => -1 );
+
+	$floor = get_term_by('slug', 'independent-contractor', 'floor', 'ARRAY_A');
+	$floor_id = $floor['term_id'];
+
+	$args = array( 'post_type' => 'employee','numberposts' => -1, 
+		'tax_query' => array(
+	    array(
+	        'taxonomy' => 'floor',
+	        'field'    => 'id',
+	        'terms'    => $floor_id,
+	        operator => 'NOT IN'
+	    )
+) );
 	$myposts = get_posts( $args );
 	foreach ( $myposts as $post ) : setup_postdata( $post ); 
 ?>

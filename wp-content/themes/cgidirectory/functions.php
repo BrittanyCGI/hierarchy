@@ -659,7 +659,8 @@ function snap($group, $group_title) { ?>
 					}
 					?>
 
-					<h4><?php echo get_the_title($post);?> <a href="../#<?php echo $slug ?>"> <i class="fa fa-info-circle"></i></a> <span class="sub-heading-2"><?php echo $title ?></span></h4> 
+					<h4><?php echo get_the_title($post);?> 
+					<?php if($job_title): ?><a href="../#<?php echo $slug ?>"> <i class="fa fa-info-circle"></i></a><?php endif; ?> <span class="sub-heading-2"><?php echo $title ?></span></h4> 
 				<?php endforeach;
 			} else { ?>
 			<h4>TBD</h4>
