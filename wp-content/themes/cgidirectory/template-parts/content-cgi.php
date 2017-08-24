@@ -17,7 +17,7 @@
 			foreach ($supervisees as $key) {
 				$meta = get_metadata('post', $key->ID);
 				$job = $meta['employee_title_title'][0];
-				if ($job == "Human Resources" || $job == "Director of Personnel"){
+				if ($job == "Human Resources" || $job == "Director of Personnel" || $job == "Admin Manager"){
 					array_push($tier3, $key);
 				} else {
 					array_push($tier4, $key);
@@ -67,6 +67,8 @@
 								<div class="col-xs-6 tier-4">
 								<?php if ($position_title == "Director of Personnel") :?>
 								<h5 class="heading group-heading">Talent &amp; Recruitment</h5> 
+								<?php elseif ($position_title == "Admin Manager") :?>
+								<h5 class="heading group-heading">Admin &amp; Accounting</h5> 
 								<?php endif; ?>
 									<ul>
 										<?php get_name($supervisees); ?>
@@ -83,27 +85,6 @@
 				<?php }; }; ?>
 
 
-				<?php if (!empty($tier4)){  ?>
-						<div class="flex tier-3-4-row">
-							<div class="col-xs-6 tier-3 empty"></div>
-							<div class="col-xs-6 tier-4">	
-							<?php if ($job_title == "Vice President and CFO") { ?>
-								<h5 class="heading group-heading">Admin &amp; Accounting</h5> 
-								<?php } ?>
-								<ul>
-									<?php 
-									if (count($tier4) == 1) {
-										$meta = get_metadata('post', $tier4[0]->ID);
-										$position = $meta['employee_title_title'][0];
-										echo '<h5 class="heading group-heading">' . $position . '</h5>';
-									}
-									get_name($tier4);
-									?>
-
-								</ul>
-							</div>
-						</div>
-						<?php }?>
 
 				</div> <!-- tier-3-4 -->
 			</div>	<!-- row -->

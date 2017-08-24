@@ -399,9 +399,16 @@ caption{
 .hierarchy-button {
     background: #e2e2e2;
     padding: 10px;
-
+    min-height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-left: solid white 2px;
+    border-right: solid white 2px;
 }
-
+.frank .hierarchy-button h3{
+	font-size: 16px;
+}
 .current {
   background: #19C1DD;
 
@@ -765,8 +772,8 @@ ul {
     border-bottom: 5px solid #ccc;
     border-right: 5px solid #ccc;
     height: 29px;
-    width: 71%;
-    right: 29%;
+	width: 61%;
+    right: 39%;
     bottom: 100%;
 }
 @media (max-width: 992px){
