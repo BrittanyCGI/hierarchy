@@ -84,7 +84,24 @@
 
 				<?php }; }; ?>
 
-
+				<?php if (!empty($tier4)){  ?>
+ 						<div class="flex tier-3-4-row">
+ 							<div class="col-xs-6 tier-3 empty"></div>
+							<div class="col-xs-6 tier-4">	
+								<ul>
+ 									<?php 
+ 									if (count($tier4) == 1) {
+ 										$meta = get_metadata('post', $tier4[0]->ID);
+ 										$position = $meta['employee_title_title'][0];
+ 										echo '<h5 class="heading group-heading">' . $position . '</h5>';
+ 									}
+ 									get_name($tier4);
+ 									?>
+ 
+ 								</ul>
+ 							</div>
+ 						</div>
+ 						<?php }?>
 
 				</div> <!-- tier-3-4 -->
 			</div>	<!-- row -->
