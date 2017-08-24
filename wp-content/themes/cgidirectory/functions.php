@@ -647,9 +647,10 @@ function snap($group, $group_title) { ?>
 			<h3><?php echo $group_title ?></h3>
 			<?php if(!empty($group)) {
 				foreach ($group as $post) : 
-					$SNPposition = get_field('snapnation_job_title');
+					
 					$meta = get_metadata('post', $post->ID);
 					$job_title = $meta['employee_title_title'][0];
+					$SNPposition = $meta['snapnation_job_title'][0];
 
 					if ($SNPposition) {
 						$title = $SNPposition;
@@ -661,7 +662,7 @@ function snap($group, $group_title) { ?>
 					<h4><?php echo get_the_title($post);?> <a href="../#<?php echo $slug ?>"> <i class="fa fa-info-circle"></i></a> <span class="sub-heading-2"><?php echo $title ?></span></h4> 
 				<?php endforeach;
 			} else { ?>
-			<h3>TBD</h3>
+			<h4>TBD</h4>
 
 			<?php }; ?>
 		</div>

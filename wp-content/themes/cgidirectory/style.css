@@ -393,6 +393,9 @@ caption{
   margin-bottom: 5px;
   z-index: 500;
 }
+#SNP-tree h3 {
+	text-decoration: underline;
+}
 
 
 /* BUTTONS */
