@@ -182,7 +182,7 @@
 					$meta = get_metadata('post', $employee->ID);
 					$job_title = $meta['employee_title_title'][0];
 
-					if (strpos($job_title, 'Designer') !== false){
+					if (strpos($job_title, 'Design') !== false){
 			    		array_push($designers, $employee);
 					} elseif (strpos($job_title, 'Writer') !== false) {
 						array_push($writers, $employee);
