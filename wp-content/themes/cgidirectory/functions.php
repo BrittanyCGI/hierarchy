@@ -641,33 +641,7 @@ add_action( 'save_post', 'contact_information_save' );
 	<?php endif;
 	}
 
-function snap($group, $group_title) { ?>
-	<div class="row branch flex">
-		<div class="col-sm-6 col-xs-12 tier-2 flex flex-col no-children">
-			<h3><?php echo $group_title ?></h3>
-			<?php if(!empty($group)) {
-				foreach ($group as $post) : 
-					
-					$meta = get_metadata('post', $post->ID);
-					$job_title = $meta['employee_title_title'][0];
-					$SNPposition = $meta['snapnation_job_title'][0];
 
-					if ($SNPposition) {
-						$title = $SNPposition;
-					} else {
-						$title = $job_title;
-					}
-					?>
 
-					<h4><?php echo get_the_title($post);?> 
-					<?php if($job_title): ?><a href="../#<?php echo $slug ?>"> <i class="fa fa-info-circle"></i></a><?php endif; ?> <span class="sub-heading-2"><?php echo $title ?></span></h4> 
-				<?php endforeach;
-			} else { ?>
-			<h4>TBD</h4>
 
-			<?php }; ?>
-		</div>
-		<div class="col-sm-6 hidden-xs"></div>
-	</div>
-<?php } ?>
 

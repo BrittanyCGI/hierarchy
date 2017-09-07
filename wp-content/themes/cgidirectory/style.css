@@ -548,9 +548,7 @@ ul {
 .hierarchy a:hover {
 	color: #19C1DD;
 }
-#SNP-tree {
-	text-align: left;
-}
+
 
 @media (max-width: 992px){
 	.hierarchy h3 {
