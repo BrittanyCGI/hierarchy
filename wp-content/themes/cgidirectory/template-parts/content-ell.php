@@ -12,7 +12,7 @@
 
 			$sales_execs = array();
 			$acct_execs = array();
-			$sales_mgr = array();
+			$tier3 = array();
 			$sales_team_leaders = array();
 			$mrkt_execs = array();
 			$mrkt_assc = array();
@@ -26,8 +26,8 @@
 					array_push($sales_execs, $post);
 				} elseif ($position == 'Account Executive') {
 					array_push($acct_execs, $post);
-				} elseif ($position == 'Sales Manager') {
-					array_push($sales_mgr, $post);
+				} elseif ($position == 'Sales Manager' || $position == 'Special Projects') {
+					array_push($tier3, $post);
 				} elseif ($position == 'Sales Associate Team Leader') {
 					array_push($sales_team_leaders, $post);
 				} elseif ($position == 'Marketing Executive') {
@@ -41,7 +41,7 @@
 
 				if(strpos($job_title, 'Vice President') !== false) : ?>
 
-					<?php if (empty($sales_mgr) && empty($sales_execs) && empty($acct_execs) && empty($sales_team_leaders) && empty($mrkt_assc) && empty($mrkt_execs)): ?>
+					<?php if (empty($tier3) && empty($sales_execs) && empty($acct_execs) && empty($sales_team_leaders) && empty($mrkt_assc) && empty($mrkt_execs)): ?>
 					<div class="row branch flex">
 						<div class="col-sm-3 col-xs-5 tier-2 flex flex-col no-children">
 							<h3><?php echo get_the_title($employee);?> <a href="../#<?php echo $slug ?>"><i class="fa fa-info-circle"></i></a></h3>
@@ -76,24 +76,36 @@
 					<?php misc($misc_tier3) ?>
 
 					<!-- SALES MANAGER + ACCOUNT EXECUTIVES -->
-					<?php if (!empty($sales_mgr)) {
-						foreach($sales_mgr as $employee): 
+					<?php if (!empty($tier3)) {
+						foreach($tier3 as $employee): 
+								$meta = get_metadata('post', $employee->ID);
+								$job_title = $meta['employee_title_title'][0];
 							    $slug=$employee->post_name;
 							    $acct_execs_slug=$slug;
 							    $acct_execs = get_employees($acct_execs_slug);
+
 							?>
 							<div class="flex tier-3-4-row">
-								<div class="col-xs-4 tier-3 sales-mgr">
-										<h4> <?php echo get_the_title($employee);?><a href="../#<?php echo $slug ?>"> <i class="fa fa-info-circle"></i></a></h4>
-										<h5 class="heading">Sales Manager</h5>	
-								</div>
-								<div class="col-xs-6 col-sm-4 tier-4 acct-execs">
-									<h5 class="heading group-heading">Account Executives</h5>
-									<ul>
-									<?php get_name($acct_execs) ?>
-									</ul>
-								</div>
-								<div class="col-xs-2 col-sm-4 blank"></div>
+								<?php if (empty($acct_execs)) : ?>
+									<div class="col-xs-4 tier-3 no-children">
+								<?php else : ?>
+									<div class="col-xs-4 tier-3 ">
+								<?php endif; ?>
+										<h4> <?php echo get_the_title($employee);?> <a href="../#<?php echo $slug ?>"><i class="fa fa-info-circle"></i></a></h4>
+										<h5 class="heading"><?php echo $job_title ?></h5>	
+									</div>
+
+								<?php if (empty($acct_execs)) : ?>
+									<div class="col-xs-8 blank"></div>
+								<?php else : ?>
+									<div class="col-xs-6 col-sm-4 tier-4 acct-execs">
+										<h5 class="heading group-heading">Account Executives</h5>
+										<ul>
+										<?php get_name($acct_execs) ?>
+										</ul>
+									</div>
+									<div class="col-xs-2 col-sm-4 blank"></div>
+								<?php endif; ?>
 							</div>
 					<?php endforeach;} ?><!-- endif sales manager + account execs section -->
 
