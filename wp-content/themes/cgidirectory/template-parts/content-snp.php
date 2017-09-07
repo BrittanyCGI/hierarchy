@@ -239,7 +239,26 @@
 			</div>
 
 
+ 		<?php } elseif ($SNPdept == 'Website and Graphic Design') { ?>
 
+			<div class="row branch flex">
+				<?php // TIER 2 // ?>
+
+					
+
+					<div class="col-sm-8 tier-2 flex flex-col empty"></div>
+
+						<?php // TIER 3 // ?>
+						<div class="col-xs-4 tier-3-4">
+							<div class="flex tier-3-4-row">						
+								<div class="col-xs-12 tier-3 no-children">
+									<h4><?php echo $name;?> <a href="../#<?php echo $slug ?>"> <i class="fa fa-info-circle"></i></a></h4>
+									<?php if($job_title): ?><h5><?php endif; ?> <span class="sub-heading-2"><?php echo $title ?></span> </h5>
+								</div>
+							</div>
+						</div>
+					
+			</div>
 
 
 
