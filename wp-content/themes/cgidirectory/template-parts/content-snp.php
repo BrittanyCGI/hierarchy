@@ -16,7 +16,6 @@
 			$training = array();
 			$clientDev = array();
 			$webGraphic = array();
-			$snpMagic = array();
 			$misc = array();
 	
 
@@ -40,8 +39,6 @@
 				array_push($clientDev, $post);
 			} elseif ($SNPdept == 'Website and Graphic Design') {
 				array_push($webGraphic, $post);
-			} elseif ($SNPdept == 'SnapMagic Team Building') {
-				array_push($snpMagic, $post);
 			} else {
 				array_push($misc, $post);
 			}  
@@ -54,7 +51,6 @@
 
 
 
-snap($snpMagic, 'SnapMagic Team Building');
 snap($recruit, 'Recruiting');
 snap($community, 'Community Ambassadors');
 snap($sales, 'Sales');

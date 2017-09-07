@@ -412,6 +412,14 @@ caption{
 .frank .hierarchy-button h3{
 	font-size: 18px;
 }
+#SNP h3 {
+	font-size: 16px;
+}
+@media screen and (min-width: 577px){
+	.snap-br {
+		display: none;
+	}
+}
 .current {
   background: #19C1DD;
 

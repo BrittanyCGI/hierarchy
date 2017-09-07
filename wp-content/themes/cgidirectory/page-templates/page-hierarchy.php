@@ -45,7 +45,7 @@ get_header(); ?>
 							<h3>President | Next! Ad Agency</h3>
 						</div>
 						<div class="hierarchy-button col-sm-3 col-xs-5" id="SNP">
-							<h3>Snap Nation</h3>
+							<h3>Snap<br class="snap-br">Nation</h3>
 						</div>
 					
 					</div>
