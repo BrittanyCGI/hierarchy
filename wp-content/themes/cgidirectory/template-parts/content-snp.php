@@ -74,7 +74,7 @@
 	    	}
 	    } // find supervisees under tier 2 employee
 
-		if ($SNPdept == 'Sales') { ?>
+		if ($SNPdept == 'Vice Presidents') { ?>
 
 			<div class="row branch flex">
 				<?php // TIER 2 //
@@ -154,8 +154,96 @@
 						<?php } ?>
 						</div>
 					<?php } ?>
-
 			</div>
+
+
+
+
+
+		<?php } elseif ($SNPdept == 'Community Ambassadors') { ?>
+
+			<div class="row branch flex">
+				<?php // TIER 2 // ?>
+
+					
+
+					<div class="col-sm-4 tier-2 flex flex-col empty"></div>
+
+						<?php // TIER 3 // ?>
+						<div class="col-xs-8 tier-3-4">
+							<div class="flex tier-3-4-row">
+								<?php if(!empty($supervisees)) { ?>
+									<div class="col-xs-6 tier-3">
+								<?php } else { ?>
+									<div class="col-xs-6 tier-3 no-children">
+								<?php } ?>
+										<h4><?php echo $name;?> <a href="../#<?php echo $slug ?>"> <i class="fa fa-info-circle"></i></a></h4>
+										<?php if($job_title): ?><h5><?php endif; ?> <span class="sub-heading-2"><?php echo $title ?></span> </h5>
+									</div>
+
+
+									<?php // TIER 4 //
+
+									if(!empty($supervisees)) { ?>
+									<div class="col-xs-6 tier-4">
+									<h5 class="heading group-heading">Community Ambassadors</h5>
+										<?php 
+											get_name($supervisees);
+										 ?>
+									</div>
+									<?php } else { ?>
+									<div class="col-xs-6 empty">
+									</div>
+									<?php } ?>
+							</div>
+						</div>
+			</div>
+
+ 		<?php } elseif ($SNPdept == 'Sales') { ?>
+
+			<div class="row branch flex">
+				<?php // TIER 2 // ?>
+
+					
+
+					<div class="col-sm-4 tier-2 flex flex-col empty"></div>
+
+						<?php // TIER 3 // ?>
+						<div class="col-xs-8 tier-3-4">
+							<div class="flex tier-3-4-row">
+								<?php if(!empty($supervisees)) { ?>
+									<div class="col-xs-6 tier-3">
+								<?php } else { ?>
+									<div class="col-xs-6 tier-3 no-children">
+								<?php } ?>
+										<h4><?php echo $name;?> <a href="../#<?php echo $slug ?>"> <i class="fa fa-info-circle"></i></a></h4>
+										<?php if($job_title): ?><h5><?php endif; ?> <span class="sub-heading-2"><?php echo $title ?></span> </h5>
+									</div>
+
+
+									<?php // TIER 4 //
+
+									if(!empty($supervisees)) { ?>
+									<div class="col-xs-6 tier-4">
+									<h5 class="heading group-heading">Sales Executives</h5>
+										<?php 
+											get_name($supervisees);
+										 ?>
+									</div>
+									<?php } else { ?>
+									<div class="col-xs-6 empty">
+									</div>
+									<?php } ?>
+							</div>
+						</div>
+			</div>
+
+
+
+
+
+
+
 
 		<?php } elseif ($SNPdept == 'Training Seminar') { ?>
 					<div class="row branch flex">
@@ -166,8 +254,8 @@
 				<?php } else { ?>
 					<div class="col-sm-4 tier-2 flex flex-col ">
 				<?php } ?>
-						<h4><?php echo $name;?></h4>
-						<?php if($job_title): ?><h5><a href="../#<?php echo $slug ?>"> <i class="fa fa-info-circle"></i></a><?php endif; ?> <span class="sub-heading-2"><?php echo $title ?></span> </h5>
+						<h4><?php echo $name;?> <a href="../#<?php echo $slug ?>"> <i class="fa fa-info-circle"></i></a></h4>
+						<?php if($job_title): ?><h5><?php endif; ?> <span class="sub-heading-2"><?php echo $title ?></span> </h5>
 					</div>
 
 
