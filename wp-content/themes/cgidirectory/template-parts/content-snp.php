@@ -81,12 +81,12 @@
 
 					
 				if (empty($supervisees)) { ?>
-					<div class="col-sm-4 tier-2 flex flex-col no-children">
+					<div class="col-xs-4 tier-2 flex flex-col no-children">
 				<?php } else { ?>
-					<div class="col-sm-4 tier-2 flex flex-col ">
+					<div class="col-xs-4 tier-2 flex flex-col ">
 				<?php } ?>
-						<h4><?php echo $name;?> <a href="../#<?php echo $slug ?>"> <i class="fa fa-info-circle"></i></a></h4>
-						<?php if($job_title): ?><h5><?php endif; ?> <span class="sub-heading-2"><?php echo $title ?></span> </h5>
+						<h4><?php echo $name;?> <a href="../#<?php echo $slug ?>"><?php if($job_title): ?> <i class="fa fa-info-circle"></i></a><?php endif; ?></h4>
+						<h5> <span class="sub-heading-2"><?php echo $title ?></span> </h5>
 					</div>
 
 
@@ -129,10 +129,9 @@
 									<div class="col-xs-6 tier-3">
 								<?php } else { ?>
 									<div class="col-xs-6 tier-3 no-children">
-								<?php }
+								<?php } ?>
 									
-									echo '<h4>' . $name . ' <a href="../#' . $slug .'"><i class="fa fa-info-circle"></i></a></h4>';
-									 ?>
+									<h4><?php echo $name;?> <?php if($job_title): ?><a href="../#<?php echo $slug ?>"> <i class="fa fa-info-circle"></i></a><?php endif; ?></h4>
 									 <h5><span class="sub-heading-2"><?php echo $title ?></span> </h5>
 									</div>
 
@@ -141,7 +140,7 @@
 
 									if(!empty($tier04)) { ?>
 									<div class="col-xs-6 tier-4">
-									<h5 class="heading group-heading">Talent Screeners/Recruiters</h5>
+									<h5 class="heading group-heading">Talent Screeners / Recruiters</h5>
 										<?php 
 											get_name($tier04);
 										 ?>
@@ -167,7 +166,7 @@
 
 					
 
-					<div class="col-sm-4 tier-2 flex flex-col empty"></div>
+					<div class="col-xs-4 tier-2 flex flex-col empty"></div>
 
 						<?php // TIER 3 // ?>
 						<div class="col-xs-8 tier-3-4">
@@ -177,8 +176,8 @@
 								<?php } else { ?>
 									<div class="col-xs-6 tier-3 no-children">
 								<?php } ?>
-										<h4><?php echo $name;?> <a href="../#<?php echo $slug ?>"> <i class="fa fa-info-circle"></i></a></h4>
-										<?php if($job_title): ?><h5><?php endif; ?> <span class="sub-heading-2"><?php echo $title ?></span> </h5>
+										<h4><?php echo $name;?> <a href="../#<?php echo $slug ?>"><?php if($job_title): ?> <i class="fa fa-info-circle"></i></a><?php endif; ?></h4>
+										<h5><span class="sub-heading-2"><?php echo $title ?></span> </h5>
 									</div>
 
 
@@ -206,7 +205,7 @@
 
 					
 
-					<div class="col-sm-4 tier-2 flex flex-col empty"></div>
+					<div class="col-xs-4 tier-2 flex flex-col empty"></div>
 
 						<?php // TIER 3 // ?>
 						<div class="col-xs-8 tier-3-4">
@@ -216,8 +215,8 @@
 								<?php } else { ?>
 									<div class="col-xs-6 tier-3 no-children">
 								<?php } ?>
-										<h4><?php echo $name;?> <a href="../#<?php echo $slug ?>"> <i class="fa fa-info-circle"></i></a></h4>
-										<?php if($job_title): ?><h5><?php endif; ?> <span class="sub-heading-2"><?php echo $title ?></span> </h5>
+										<h4><?php echo $name;?> <a href="../#<?php echo $slug ?>"><?php if($job_title): ?> <i class="fa fa-info-circle"></i></a><?php endif; ?></h4>
+										<h5><span class="sub-heading-2"><?php echo $title ?></span> </h5>
 									</div>
 
 
@@ -246,7 +245,7 @@
 
 					
 
-					<div class="col-sm-8 tier-2 flex flex-col empty"></div>
+					<div class="col-xs-8 tier-2 flex flex-col empty"></div>
 
 						<?php // TIER 3 // ?>
 						<div class="col-xs-4 tier-3-4">
@@ -269,12 +268,12 @@
 				<?php // TIER 2 //
 
 				if (empty($supervisees)) { ?>
-					<div class="col-sm-4 tier-2 flex flex-col no-children">
+					<div class="col-xs-4 tier-2 flex flex-col no-children">
 				<?php } else { ?>
-					<div class="col-sm-4 tier-2 flex flex-col ">
+					<div class="col-xs-4 tier-2 flex flex-col ">
 				<?php } ?>
-						<h4><?php echo $name;?> <a href="../#<?php echo $slug ?>"> <i class="fa fa-info-circle"></i></a></h4>
-						<?php if($job_title): ?><h5><?php endif; ?> <span class="sub-heading-2"><?php echo $title ?></span> </h5>
+						<h4><?php echo $name;?> <a href="../#<?php echo $slug ?>"><?php if($job_title): ?> <i class="fa fa-info-circle"></i></a><?php endif; ?></h4>
+						<h5><span class="sub-heading-2"><?php echo $title ?></span> </h5>
 					</div>
 
 
