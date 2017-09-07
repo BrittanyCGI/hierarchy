@@ -12,41 +12,15 @@
 
 
 			$snp = array(); // under Frank
-			$recruit = array(); // under Paul
-			$community = array(); // under Amy
-			$talent = array(); // under Don
 
-/*
-			$recruit = array();
-			$community = array();
-			$sales = array();
-			$training = array();
-			$clientDev = array();
-			$webGraphic = array();
-			$misc = array();
-*/
 
 		foreach($SNPteam as $post){
 			
-			$meta = get_metadata('post', $post->ID);
-			$job_title = $meta['employee_title_title'][0];
-		    $slug=$post->post_name;
-
-			$SNPposition = get_field('snapnation_job_title');
 			$supField = get_field_object('supervisor');
 			$SNPsup = $supField['value'];
 
-
 			if ($SNPsup == 'Frank Buono') {
 				array_push($snp, $post);
-			} elseif ($SNPsup == 'Paul Linton') {
-				array_push($recruit, $post);
-			} elseif ($SNPsup == 'Don Hill') {
-				array_push($talent, $post);
-			} elseif ($SNPsup == 'Amy Curran') {
-				array_push($community, $post);
-			} else {
-				array_push($misc, $post);
 			} 
 }
 
