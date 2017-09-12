@@ -90,10 +90,14 @@
 							<div class="col-xs-6 tier-4">	
 								<ul>
  									<?php 
- 									if (count($tier4) == 1) {
- 										$meta = get_metadata('post', $tier4[0]->ID);
+	 									$meta = get_metadata('post', $tier4[0]->ID);
  										$position = $meta['employee_title_title'][0];
+ 									if (count($tier4) == 1) {
+ 						
  										echo '<h5 class="heading group-heading">' . $position . '</h5>';
+ 									} elseif (strpos($position, 'Developer') !== false) {
+ 										
+ 										echo '<h5 class="heading group-heading">Web Developers</h5>';
  									}
  									get_name($tier4);
  									?>

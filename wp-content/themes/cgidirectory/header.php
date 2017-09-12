@@ -21,7 +21,7 @@
 <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script> 
 
 <!-- jQuery datatables addon -->
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/dt-1.10.13/datatables.min.css"/>
