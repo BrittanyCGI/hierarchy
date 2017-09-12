@@ -18,6 +18,7 @@
 			$mrkt_assc = array();
 			$misc_tier3 = array();
 			$resrch = array();
+			$special = array();
 
 
 			foreach ($supervisees as $post ) {
@@ -26,7 +27,7 @@
 					array_push($sales_execs, $post);
 				} elseif ($position == 'Account Executive') {
 					array_push($acct_execs, $post);
-				} elseif ($position == 'Sales Manager' || $position == 'Special Projects') {
+				} elseif ($position == 'Sales Manager') {
 					array_push($tier3, $post);
 				} elseif ($position == 'Sales Associate Team Leader') {
 					array_push($sales_team_leaders, $post);
@@ -34,7 +35,10 @@
 					array_push($mrkt_execs, $post);
 				} elseif ($position == 'Marketing Associate') {
 					array_push($mrkt_assc, $post);
-				}  else {
+				} elseif ($position == 'Special Projects') {
+					array_push($special, $post);
+				}
+				else {
 					array_push($misc_tier3, $post);
 				}
 			} // end foreach supervisees loop - add employees to arrays by job title
@@ -118,7 +122,17 @@
 
 
 
-
+				<?php elseif ($job_title == 'Special Projects') : ?> 
+					<div class="row branch flex">
+						<div class="col-xs-4 col-sm-3 tier-2 flex flex-col empty"></div>
+						<div class="col-sm-9 col-xs-8 tier-3-4">
+							<div class="flex tier-3-4-row">
+								<div class="col-xs-6 col-sm-4 tier-4">
+									<h4> <?php echo get_the_title($employee);?> <a href="../#<?php echo $slug ?>"><i class="fa fa-info-circle"></i></a></h4>
+									<h5 class="heading"><?php echo $job_title ?></h5>
+								</div>
+								<div class="col-xs-6 col-sm-8 blank"></div>
+							</div>
 
 
 				<?php elseif ($job_title == 'Researcher') : ?> 
