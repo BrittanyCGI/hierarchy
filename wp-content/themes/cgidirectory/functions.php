@@ -627,8 +627,8 @@ add_action( 'save_post', 'contact_information_save' );
 	function media($group, $group_title) {
 		if (!empty($group)) :?>
 		<div class="tier-3-4-row flex">
-			<div class="col-xs-4 col-sm-5 tier-3 empty"></div>
-			<div class="col-xs-8 col-sm-7 tier-4">
+			<div class="col-xs-6 col-sm-5 tier-3 empty"></div>
+			<div class="col-xs-6 col-sm-7 tier-4">
 				<h5 class="heading group-heading"><?php echo $group_title ?></h5>
 				<ul>
 					<?php 
@@ -642,6 +642,30 @@ add_action( 'save_post', 'contact_information_save' );
 	}
 
 
+	function media_with_leader($group, $group_title) {
+		if (!empty($group)) : 
+			foreach($group as $employee) : 
+				$meta = get_metadata('post', $employee->ID);
+				$job_title = $meta['employee_title_title'][0];
+			    $slug=$employee->post_name;
+			    $supervisees = get_employees($slug);
+			?>
+		<div class="tier-3-4-row flex">
+			<div class="col-xs-6 col-sm-5 tier-3">
+				<h4><?php echo get_the_title($employee); echo " <a href=\"../#" . $slug . "\"><i class=\"fa fa-info-circle\"></i></a></h4>" ?>
+				<h5><?php echo $job_title ?></h5>
+			</div>
+			<div class="col-xs-6 col-sm-7 tier-4">
+				<h5 class="heading group-heading"><?php echo $group_title ?></h5>
+				<ul>
+					<?php 
+						get_name($supervisees);
 
+						?>
+				</ul>
+			</div>
+		</div>
+	<?php endforeach; endif;
+	}
 
 

@@ -158,7 +158,7 @@
 
 		<?php //// MEDIA bc there are 2 mgrs, DMCD is generated differently -- looping through DMCD leaders, and then looping through team separately ?>
 		<div class="row branch flex">
-			<div class="col-xs-3 tier-2 flex flex-col empty"></div>
+			<div class="col-xs-2 tier-2 flex flex-col empty"></div>
 			<div class="col-xs-4 tier-2 ">
 				<?php foreach ($media as $employee) {
 					$slug=$employee->post_name;
@@ -166,7 +166,7 @@
 				} ?>
 					<h4 class="heading">Digital Media &amp; Creative Design Team Leaders</h4>
 			</div>
-			<div class="col-xs-5 tier-3-4">
+			<div class="col-xs-6 tier-3-4">
 
 
 
@@ -199,7 +199,7 @@
 
 				media($designers, 'Designers');
 				media($writers, 'Web/SEO Writers');
-				media($coordinators, 'Website Coordinators');
+				media_with_leader($coordinators, 'Website Coordinators');
 				media($google, 'Google AdWords');
 				media($social, 'Social Media');
 				media($specialists, 'Web & SEO Specialists');
