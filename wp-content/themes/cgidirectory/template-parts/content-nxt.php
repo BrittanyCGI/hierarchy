@@ -95,8 +95,9 @@
 						    	$group_title = 'Client Development Managers';
 						    } elseif ($acct_mgr_check !== false) {
 						    	$group_title = 'Account Managers';
-						    }
-						    else {
+						    } elseif ($job_title == 'Account Associate Team Leader') {
+						    	$group_title = 'Account Associates';
+						    } else {
 						    	$group_title = NULL;
 						    } 
 
@@ -104,19 +105,25 @@
 					<div class="flex tier-3-4-row">
 					<?php if(empty($tier4)) : ?>
 						<div class="col-xs-6 col-sm-7 tier-3 no-children">
+					<?php elseif($job_title == 'Account Associate Team Leader' ) : ?>
+						<div class="col-xs-6 col-sm-7 tier-3 empty">
 					<?php else : ?>
 						<div class="col-xs-6 col-sm-7 tier-3">
-					<?php endif; ?>
 							<h4><?php echo get_the_title($employee); echo " <a href=\"../#" . $slug . "\"><i class=\"fa fa-info-circle\"></i></a></h4>" ?>
 							<h5><?php echo $job_title ?></h5>
+					<?php endif; ?>
+							
 						</div>
 
 					<?php 
 				    if (!empty($tier4)) : ?>
 					    <div class="col-xs-6 col-sm-5 tier-4">
+					    	<?php if ($job_title == 'Account Associate Team Leader') : ?>
+					    		<h4> <?php echo get_the_title($employee);?> : <span class="sub-heading"><?php echo $job_title ?></span>  <a href="../#<?php echo $slug ?>"><i class="fa fa-info-circle"></i></a></h4>
+					    	<?php endif; ?>
 					    	<?php if ($group_title){
 					    		echo "<h5 class=\"heading group-heading\"> $group_title </h5>";
-					    		} ?>
+				    		} ?>
 					    	<?php foreach ($tier4 as $employee) {
 					    		$meta = get_metadata('post', $employee->ID);
 								$position = $meta['employee_title_title'][0];
