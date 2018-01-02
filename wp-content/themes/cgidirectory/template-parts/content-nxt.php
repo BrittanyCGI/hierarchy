@@ -39,6 +39,7 @@
 					<h4 class="heading"><?php echo $job_title ?></h4>
 				</div>
 				<div class="col-xs-1 tier-3 empty"></div>
+			<?php if(strpos($job_title, 'Community Operations')) : ?>
 				<div class="col-xs-7 tier-3-4">
 					<div class="tier-3-4-row flex">
 						<div class="col-xs-6 col-sm-7 tier-3 empty"></div>
@@ -50,6 +51,64 @@
 						</div>
 					</div>
 				</div> <!-- closing tag for tier-3-4 -->
+			<?php elseif (strpos($job_title, 'Client')) : ?>
+				<div class="col-xs-7 tier-3-4">
+					<?php if (!empty($supervisees)) {
+
+					foreach ($supervisees as $employee) : 
+							$meta = get_metadata('post', $employee->ID);
+							$job_title = $meta['employee_title_title'][0];
+						    $slug=$employee->post_name;
+						    $tier4 = get_employees($slug); 
+						    $acct_mgr_check = strpos($job_title, 'Account Manager');
+
+						    if ($acct_mgr_check !== false) {
+						    	$group_title = 'Account Managers';
+						    } else {
+						    	$group_title = NULL;
+						    } 
+
+						?>
+					<div class="flex tier-3-4-row">
+					<?php if(empty($tier4)) : ?>
+						<div class="col-xs-6 col-sm-7 tier-3 no-children">
+					<?php else : ?>
+						<div class="col-xs-6 col-sm-7 tier-3">
+							<h4><?php echo get_the_title($employee); echo " <a href=\"../#" . $slug . "\"><i class=\"fa fa-info-circle\"></i></a></h4>" ?>
+							<h5><?php echo $job_title ?></h5>
+					<?php endif; ?>
+							
+						</div>
+
+					<?php 
+				    if (!empty($tier4)) : ?>
+					    <div class="col-xs-6 col-sm-5 tier-4">
+					    	<?php if ($group_title){
+					    		echo "<h5 class=\"heading group-heading\"> $group_title </h5>";
+				    		} ?>
+					    	<?php foreach ($tier4 as $employee) {
+					    		$meta = get_metadata('post', $employee->ID);
+								$position = $meta['employee_title_title'][0];
+							    $slug=$employee->post_name;
+							    $tier5 = get_employees($slug); 
+					    	?>
+								<h4> <?php echo get_the_title($employee) ?> <a href="../#<?php echo $slug ?>"><i class="fa fa-info-circle"></i></a></h4>
+							<?php } ?>
+
+					    </div>
+
+					<?php else : ?>
+						<div class="col-xs-6 col-sm-5 empty"></div>
+					<?php endif; ?>
+					</div>
+					<?php endforeach; ?>
+
+					<?php }; ?>
+
+				</div> <!-- closing tag for tier-3-4 -->
+				
+
+			<?php endif; ?>
 
 			</div><!-- closing tag for row branch -->
 		<?php endforeach; ?>
@@ -204,7 +263,7 @@
 					}
 				}
 
-				media($designers, 'Designers');
+				media_with_leader($designers, 'Designers');
 				media($writers, 'Web/SEO Writers');
 				media_with_leader($coordinators, 'Website Coordinators');
 				media($google, 'Google AdWords');
