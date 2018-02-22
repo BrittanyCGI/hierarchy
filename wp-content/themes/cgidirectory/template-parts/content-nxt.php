@@ -9,11 +9,11 @@
 		$mediaTeam = get_employees('media'); // different slug b/c team has 2 mgrs
 
 		foreach($NXTtier2 as $employee){
-			
-			$meta = get_metadata('post', $employee->ID);
-			$job_title = $meta['employee_title_title'][0];
-		    $slug=$employee->post_name;
-		    $supervisees = get_employees($slug);
+			// loops through NXTtier2 and gets data for each employee
+			$meta = get_metadata('post', $employee->ID); // gets all employee data
+			$job_title = $meta['employee_title_title'][0]; // gets job title
+		    $slug=$employee->post_name; // gets employee slug
+		    $supervisees = get_employees($slug); // gets employee supervisees
 
 
 		    	if (strpos($job_title, 'Vice President') !== false){
@@ -28,6 +28,7 @@
 
 ////// VP ROW /////
 		    foreach($vp as $employee) : 
+		    	//loops through VPs
 		    $meta = get_metadata('post', $employee->ID);
 			$job_title = $meta['employee_title_title'][0];
 		    $slug=$employee->post_name;
@@ -39,7 +40,11 @@
 					<h4 class="heading"><?php echo $job_title ?></h4>
 				</div>
 				<div class="col-xs-1 tier-3 empty"></div>
-			<?php if(strpos($job_title, 'Community Operations')) : ?>
+
+
+			<?php if(strpos($job_title, 'Community Operations')) : 
+			// brandon bartz row
+			?>
 				<div class="col-xs-7 tier-3-4">
 					<div class="tier-3-4-row flex">
 						<div class="col-xs-6 col-sm-7 tier-3 empty"></div>
@@ -50,16 +55,22 @@
 							</ul>
 						</div>
 					</div>
-				</div> <!-- closing tag for tier-3-4 -->
-			<?php elseif (strpos($job_title, 'Client')) : ?>
+				</div> <?php //closing tag for tier-3-4 ?>
+
+
+			<?php elseif (strpos($job_title, 'Client')) : 
+			// Tom Doran's row - VP of Client Experience
+			?>
 				<div class="col-xs-7 tier-3-4">
 					<?php if (!empty($supervisees)) {
 
 					foreach ($supervisees as $employee) : 
+						// gets employee data for all of Tom's supervisees
 							$meta = get_metadata('post', $employee->ID);
 							$job_title = $meta['employee_title_title'][0];
 						    $slug=$employee->post_name;
 						    $tier4 = get_employees($slug); 
+						    // checks title, just in case he supervises roles other than Acct Mngr in the future
 						    $acct_mgr_check = strpos($job_title, 'Account Manager');
 
 						    if ($acct_mgr_check !== false) {
@@ -81,12 +92,15 @@
 						</div>
 
 					<?php 
-				    if (!empty($tier4)) : ?>
+				    if (!empty($tier4)) : 
+				    	// if Tom's supervisees have their own supervisees (tier4 employees)
+				    	?>
 					    <div class="col-xs-6 col-sm-5 tier-4">
 					    	<?php if ($group_title){
 					    		echo "<h5 class=\"heading group-heading\"> $group_title </h5>";
 				    		} ?>
 					    	<?php foreach ($tier4 as $employee) {
+					    		// gets data for each tier4 employee, outputs info below
 					    		$meta = get_metadata('post', $employee->ID);
 								$position = $meta['employee_title_title'][0];
 							    $slug=$employee->post_name;
@@ -105,12 +119,12 @@
 
 					<?php }; ?>
 
-				</div> <!-- closing tag for tier-3-4 -->
+				</div> <?php //closing tag for tier-3-4 ?> 
 				
 
 			<?php endif; ?>
 
-			</div><!-- closing tag for row branch -->
+			</div><?php // closing tag for row branch ?>
 		<?php endforeach; ?>
 
 			
@@ -120,13 +134,14 @@
 
 				
 		<?php foreach ($others as $employee) :
+		//non VPs and non digital media
 			    $meta = get_metadata('post', $employee->ID);
 				$job_title = $meta['employee_title_title'][0];
 			    $slug=$employee->post_name;
 			    $supervisees = get_employees($slug); ?> 
 
 			<div class="row branch flex">
-				<div class="col-xs-1 tier-2 flex flex-col empty"></div>
+				<div class="col-xs-1 tier-2 flex flex-col empty"></div> <?php // empty column so that non VPs aren't in line with VPs ?>
 				<div class="col-xs-4 tier-2 ">
 					<h3> <?php echo get_the_title($employee);?> <a href="../#<?php echo $slug ?>"> <i class="fa fa-info-circle"></i></a></h3>
 					<h4 class="heading"><?php echo $job_title ?></h4>
@@ -142,6 +157,7 @@
 						    $tier4 = get_employees($slug); 
 						    $acct_mgr_check = strpos($job_title, 'Account Manager');
 
+						    // find group title for tier 4 employees 
 						    if ($job_title == 'Head Writer'){
 						    	$group_title = "Scriptwriters";
 						    } elseif ($job_title == 'Managing Videographer'){
@@ -165,7 +181,7 @@
 					<?php if(empty($tier4)) : ?>
 						<div class="col-xs-6 col-sm-7 tier-3 no-children">
 					<?php elseif($job_title == 'Account Associate Team Leader' ) : ?>
-						<div class="col-xs-6 col-sm-7 tier-3 empty">
+						<div class="col-xs-6 col-sm-7 tier-3 empty"> <?php // empty line, so acct assct team leaders go on top of tier 4 ?>
 					<?php else : ?>
 						<div class="col-xs-6 col-sm-7 tier-3">
 							<h4><?php echo get_the_title($employee); echo " <a href=\"../#" . $slug . "\"><i class=\"fa fa-info-circle\"></i></a></h4>" ?>
@@ -177,36 +193,25 @@
 					<?php 
 				    if (!empty($tier4)) : ?>
 					    <div class="col-xs-6 col-sm-5 tier-4">
+
 					    	<?php if ($job_title == 'Account Associate Team Leader') : ?>
 					    		<h4> <?php echo get_the_title($employee);?> : <span class="sub-heading"><?php echo $job_title ?></span>  <a href="../#<?php echo $slug ?>"><i class="fa fa-info-circle"></i></a></h4>
 					    	<?php endif; ?>
+
 					    	<?php if ($group_title){
 					    		echo "<h5 class=\"heading group-heading\"> $group_title </h5>";
 				    		} ?>
 					    	<?php foreach ($tier4 as $employee) {
 					    		$meta = get_metadata('post', $employee->ID);
 								$position = $meta['employee_title_title'][0];
-							    $slug=$employee->post_name;
-							    $tier5 = get_employees($slug); 
-					    	if (!empty($tier5)): ?>
-					    	<div class="flex tier-3-4-row">
-					    		<div class="col-xs-1 empty tier-3"></div>
-					    		<div class="col-xs-11 tier-4">
-					    		<h4> <?php echo get_the_title($employee);?> : <span class="sub-heading"><?php echo $position ?></span>  <a href="../#<?php echo $slug ?>"><i class="fa fa-info-circle"></i></a></h4> 
-									<h5 class="heading group-heading">Account Associates</h5>
-									<ul>
-										<?php foreach ($tier5 as $key) {
-											echo '<h4>' . get_the_title($key) . ' <a href="../#' . $slug .'"><i class="fa fa-info-circle"></i></a></h4>';
-										} ?>
-									</ul>
-									</div></div>
-							<?php else : ?>
+							    $slug=$employee->post_name; ?>
+
 								<h4> <?php echo get_the_title($employee) ?> <a href="../#<?php echo $slug ?>"><i class="fa fa-info-circle"></i></a></h4>
-							<?php endif; } ?>
+							<?php } ?>
 
 					    </div>
 
-					<?php else : ?>
+					<?php else : //if no tier4?>
 						<div class="col-xs-6 col-sm-5 empty"></div>
 					<?php endif; ?>
 					</div>
@@ -214,8 +219,8 @@
 
 					<?php }; ?>
 
-				</div> <!-- closing tag for tier-3-4 -->
-			</div><!-- closing tag for row branch -->
+				</div> <?php //closing tag for tier-3-4 ?>
+			</div><?php //closing tag for row branch ?>
 			
 		<?php endforeach; ?>
 
@@ -226,7 +231,7 @@
 		<div class="row branch flex">
 			<div class="col-xs-2 tier-2 flex flex-col empty"></div>
 			<div class="col-xs-4 tier-2 ">
-				<?php foreach ($media as $employee) {
+				<?php foreach ($media as $employee) { // outputs info for each DMCD team leader (rachel and pauline)
 					$slug=$employee->post_name;
 					echo '<h3>' . get_the_title($employee) . " <a href=\"../#$slug\"><i class=\"fa fa-info-circle\"></i></a></h3>";
 				} ?>
@@ -244,10 +249,12 @@
 				$google = array();
 				$social = array();
 				$specialists = array();
+
 				foreach ($mediaTeam as $employee) {
 					$meta = get_metadata('post', $employee->ID);
 					$job_title = $meta['employee_title_title'][0];
 
+					// loops through digital media team and adds to corresponding group array
 					if (strpos($job_title, 'Design') !== false){
 			    		array_push($designers, $employee);
 					} elseif (strpos($job_title, 'Writer') !== false) {
@@ -263,6 +270,7 @@
 					}
 				}
 
+				// creates row for each team, see functions.php for custom functions
 				media_with_leader($designers, 'Designers');
 				media($writers, 'Web/SEO Writers');
 				media_with_leader($coordinators, 'Website Coordinators');
