@@ -38,8 +38,7 @@
 
 			<?php endif; ?>
 	    
-					<h3><?php echo get_the_title($employee);?> <a href="../#<?php echo $slug ?>"> <i class="fa fa-info-circle"></i></a></h3>
-					<h4 class="heading"><?php echo $job_title ?></h4>
+					<?php get_name2($employee, $slug, $job_title); ?>
 				</div>
 				<div class="tier-3-4 col-xs-8">
 
@@ -65,23 +64,18 @@
 							<div class="col-xs-6 tier-3 no-children">
 						<?php } ?>
 
-								<h4> <?php echo get_the_title($employee);?> <a href="../#<?php echo $slug ?>"> <i class="fa fa-info-circle"></i></a></h4>
-								<h5 class="heading"><?php echo $position_title ?></h5>
+								<?php get_name3($employee, $slug, $position_title); ?>
 							</div>
 
 
 						<?php if (!empty($supervisees)) { 
 							//if tier3 employee has its own supervise?>
 							<div class="col-xs-6 tier-4">
-							<?php if ($position_title == "Director of Personnel") :?>
-								<h5 class="heading group-heading">Talent &amp; Recruitment</h5> 
-							<?php elseif ($position_title == "Admin Manager") :?>
-								<h5 class="heading group-heading">Admin &amp; Accounting</h5> 
-							<?php endif; ?>
-								<ul>
-									<?php get_name($supervisees); 
-									//generate list of supervisees?>
-								</ul>
+							<?php if ($position_title == "Director of Personnel") :
+								name_and_position($supervisees, "Talent & Recruitment");
+							elseif ($position_title == "Admin Manager") :
+								name_and_position($supervisees, "Admin & Accounting");
+							endif; ?>
 
 							</div>
 						<?php } else { 

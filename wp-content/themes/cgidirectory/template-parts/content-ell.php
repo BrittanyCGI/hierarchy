@@ -48,8 +48,7 @@
 					<div class="col-xs-5 col-sm-4 tier-3-4">
 						<div class="flex tier-3-4-row">
 							<div class="col-xs-12 tier-4 sales-execs">
-								<h4> <?php echo get_the_title($employee);?> <a href="../#<?php echo $slug ?>"><i class="fa fa-info-circle"></i></a></h4>
-								<h5 class="heading"><?php echo $job_title ?></h5>
+								<?php get_name3($employee, $slug, $job_title); ?>
 							</div>
 						</div>
 
@@ -61,8 +60,7 @@
 					<div class="col-sm-9 col-xs-8 tier-3-4">
 						<div class="flex tier-3-4-row">
 							<div class="col-xs-6 col-sm-4 tier-4">
-								<h4> <?php echo get_the_title($employee);?> <a href="../#<?php echo $slug ?>"><i class="fa fa-info-circle"></i></a></h4>
-								<h5 class="heading"><?php echo $job_title ?></h5>
+								<?php get_name3($employee, $slug, $job_title); ?>
 							</div>
 							<div class="col-xs-6 col-sm-8 blank"></div>
 						</div>				
@@ -76,8 +74,7 @@
 						<div class="flex tier-3-4-row">
 							<div class="col-xs-4 tier-3 empty"></div>
 							<div class="col-xs-6 col-sm-4 tier-4 execs">
-								<h4> <?php echo get_the_title($employee);?> <a href="../#<?php echo $slug ?>"><i class="fa fa-info-circle"></i></a></h4>
-								<h5 class="heading"><?php echo $job_title ?></h5>
+								<?php get_name3($employee, $slug, $job_title); ?>
 							</div>
 							<div class="col-xs-2 col-sm-4 blank"></div>
 						</div>
@@ -88,8 +85,7 @@
 				?>
 					
 					<div class="col-sm-3 col-xs-5 tier-2 flex flex-col no-children">
-						<h3><?php echo get_the_title($employee);?> <a href="../#<?php echo $slug ?>"><i class="fa fa-info-circle"></i></a></h3>
-						<h4 class="heading"><?php echo $job_title ?></h4>
+						<?php get_name2($employee, $slug, $job_title); ?>
 					</div>
 					<div class="col-sm-9 col-xs-7 tier-3-4">
 
@@ -102,8 +98,7 @@
 					
 					<div class="col-xs-1 col-sm-3 tier-2 flex flex-col empty"></div>
 					<div class="col-xs-4 tier-2 ell-manager">
-						<h4> <?php echo get_the_title($employee);?> <a href="../#<?php echo $slug ?>"><i class="fa fa-info-circle"></i></a></h4>
-						<h5 class="heading"><?php echo $job_title ?></h5>
+						<?php get_name3($employee, $slug, $job_title); ?>
 					</div>
 					<div class="col-xs-7 col-sm-6 tier-3-4">
 						<?php if (!empty($sales_team_leaders)) {
@@ -117,10 +112,8 @@
 									<div class="col-sm-3 col-xs-3 tier-3 empty"></div>
 									<div class="col-sm-9 col-xs-9 tier-4 sales-execs">
 										<h4> <?php echo get_the_title($employee);?> : <span class="sub-heading">Sales Associate Team Leader</span> <a href="../#<?php echo $slug ?>"> <i class="fa fa-info-circle"></i></a></h4> 
-										<h5 class="heading group-heading">Sales Associates</h5>
-										<ul>
-											<?php get_name($sales_assc) // outputs list of sales associate for each team leader?>
-										</ul>
+										<?php name_and_position($sales_assc, "Sales Associates"); ?>
+										
 									</div>
 								</div>
 							
@@ -134,8 +127,7 @@
 				?>
 					
 						<div class="col-sm-3 col-xs-4 tier-2 flex flex-col">
-							<h3><?php echo get_the_title($employee);?> <a href="../#<?php echo $slug ?>"><i class="fa fa-info-circle"></i></a></h3>
-							<h4 class="heading"><?php echo $job_title ?></h4>
+							<?php get_name2($employee, $slug, $job_title); ?>
 						</div>
 						<div class="col-sm-9 col-xs-8 tier-3-4">
 				<?php endif; 
@@ -175,14 +167,10 @@
 							?>
 							<div class="flex tier-3-4-row">
 								<div class="col-xs-4 tier-3 sales-mgr">
-										<h4> <?php echo get_the_title($employee);?><a href="../#<?php echo $slug ?>"> <i class="fa fa-info-circle"></i></a></h4>
-										<h5 class="heading">Sales Manager</h5>	
+										<?php get_name3($employee, $slug, "Sales Manager"); ?>	
 								</div>
 								<div class="col-xs-6 col-sm-4 tier-4 acct-execs">
-									<h5 class="heading group-heading">Sales Executives</h5>
-									<ul>
-									<?php get_name($acct_execs) ?>
-									</ul>
+									<?php name_and_position($acct_execs, "Sales Executives"); ?>
 								</div>
 								<div class="col-xs-2 col-sm-4 blank"></div>
 							</div>

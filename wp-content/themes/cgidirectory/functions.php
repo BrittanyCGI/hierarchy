@@ -342,7 +342,7 @@ function floor_taxonomy() {
 add_action( 'init', 'floor_taxonomy', 0 );
 
 
-// Register Custom Taxonomy
+// Register Custom Taxonomy -- Supervisor
 function supervisor_taxonomy() {
 
 	$labels = array(
@@ -541,33 +541,43 @@ add_action( 'save_post', 'contact_information_save' );
 
 
 /* Hierarchy Functions */
-	function get_name($group){
+	function get_name($group){ //outputs name for each employee in $group
 		foreach($group as $employee) {
 			$slug=$employee->post_name;
 			echo '<h4>' . get_the_title($employee) . ' <a href="../#' . $slug .'"><i class="fa fa-info-circle"></i></a></h4>';
 		}
 	};
 
-	function name_and_position($group){
+
+	function get_name2($employee, $slug, $job_title) { //outputs single name and job title for tier2 and tier3 employees ?>
+		<h3><?php echo get_the_title($employee);?> <a href="../#<?php echo $slug ?>"><i class="fa fa-info-circle"></i></a></h3>
+		<h4 class="heading"><?php echo $job_title ?></h4>
+	<?php }; 
+
+
+	function get_name3($employee, $slug, $job_title) { //outputs single name and job title for tier2 and tier3 employees ?>
+		<h4><?php echo get_the_title($employee);?> <a href="../#<?php echo $slug ?>"><i class="fa fa-info-circle"></i></a></h4>
+		<h5 class="heading"><?php echo $job_title ?></h5>
+	<?php }; 
+
+
+	function name_and_position($group, $group_title){ // outputs group title followed by list of employees
+		echo '<h5 class="heading group-heading">' . $group_title . '</h5>';
 		foreach($group as $employee) {
 			$meta = get_metadata('post', $employee->ID);
 			$job_title = $meta['employee_title_title'][0];
 			$slug=$employee->post_name;
-			echo '<h5 class="heading group-heading">' . $job_title . '</h5>';
 			echo '<h4>' . get_the_title($employee) . ' <a href="../#' . $slug .'"><i class="fa fa-info-circle"></i></a></h4>';
 			
 		}
 	}
 
-	function execs($group, $position_title){
+	function execs($group, $position_title){ // outputs row for execs
 		if (!empty($group)) :?>
 			<div class="flex tier-3-4-row">
 				<div class="col-xs-4 tier-3 empty"></div>
 				<div class="col-xs-6 col-sm-4 tier-4 execs">
-					<h5 class="heading group-heading"><?php echo $position_title ?></h5>
-					<ul>
-						<?php get_name($group) ?>
-					</ul>
+					<?php name_and_position($group, $position_title); ?>
 				</div>
 				<div class="col-xs-2 col-sm-4 blank"></div>
 			</div>
@@ -575,21 +585,18 @@ add_action( 'save_post', 'contact_information_save' );
 	}
 
 
-	function assc($group, $position_title){
+	function assc($group, $position_title){ // outsputs row for associates (columns are slightly different sizes, otherwise same as above)
 		if (!empty($group)) :?>
 			<div class="flex tier-3-4-row">
 				<div class="col-xs-6 col-sm-7 tier-3 empty"></div>
 				<div class="col-xs-6 col-sm-5 tier-4 execs">
-					<h5 class="heading group-heading"><?php echo $position_title ?></h5>
-					<ul>
-						<?php get_name($group) ?>
-					</ul>
+					<?php name_and_position($group, $position_title); ?>
 				</div>
 			</div>
 		<?php endif; 
 	}
 
-	function misc($group){
+	function misc($group){ // outsputs row for misc group
 		if (!empty($group)) :?>
 			<div class="flex tier-3-4-row">
 				<div class="col-xs-4 tier-3 empty"></div>
@@ -603,7 +610,9 @@ add_action( 'save_post', 'contact_information_save' );
 		<?php endif; 
 	}
 
-	function get_employees($slug){
+
+
+	function get_employees($slug){ // returns employees by supervisor, in ascending order
 			return get_posts( 
 				array(
 				 'post_type' => 'employee',
@@ -615,34 +624,19 @@ add_action( 'save_post', 'contact_information_save' );
 	}
 
 
-
-	function slug($employee){
-		    $meta = get_metadata('post', $employee->ID);
-			$job_title = $meta['employee_title_title'][0];
-		    $slug=$employee->post_name;
-		    $supervisees = get_employees($slug);
-
-	}
-
-	function media($group, $group_title) {
+	function media($group, $group_title) { // outputs digital media group (same as exec and assc, with diff column sizes)
 		if (!empty($group)) :?>
 		<div class="tier-3-4-row flex">
 			<div class="col-xs-6 col-sm-5 tier-3 empty"></div>
 			<div class="col-xs-6 col-sm-7 tier-4">
-				<h5 class="heading group-heading"><?php echo $group_title ?></h5>
-				<ul>
-					<?php 
-						get_name($group);
-
-						?>
-				</ul>
+				<?php name_and_position($group, $group_title); ?>
 			</div>
 		</div>
 	<?php endif;
 	}
 
 
-	function media_with_leader($group, $group_title) {
+	function media_with_leader($group, $group_title) { // outputs digital media group with team leader
 		if (!empty($group)) : 
 			foreach($group as $employee) : 
 				$meta = get_metadata('post', $employee->ID);
@@ -656,13 +650,7 @@ add_action( 'save_post', 'contact_information_save' );
 				<h5><?php echo $job_title ?></h5>
 			</div>
 			<div class="col-xs-6 col-sm-7 tier-4">
-				<h5 class="heading group-heading"><?php echo $group_title ?></h5>
-				<ul>
-					<?php 
-						get_name($supervisees);
-
-						?>
-				</ul>
+				<?php name_and_position($supervisees, $group_title); ?>
 			</div>
 		</div>
 	<?php endforeach; endif;

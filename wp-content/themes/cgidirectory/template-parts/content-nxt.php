@@ -36,8 +36,7 @@
 
 			<div class="row branch flex">
 				<div class="col-sm-4 col-xs-4 tier-2 flex flex-col">
-					<h3><?php echo get_the_title($employee);?> <a href="../#<?php echo $slug ?>"><i class="fa fa-info-circle"></i></a></h3>
-					<h4 class="heading"><?php echo $job_title ?></h4>
+					<?php get_name2($employee, $slug, $job_title); ?>
 				</div>
 				<div class="col-xs-1 tier-3 empty"></div>
 
@@ -49,10 +48,7 @@
 					<div class="tier-3-4-row flex">
 						<div class="col-xs-6 col-sm-7 tier-3 empty"></div>
 						<div class="col-xs-6 col-sm-5 tier-4">
-							<h5 class="heading group-heading">Community Progams</h5> 
-							<ul>
-								<?php get_name($supervisees) ?>
-							</ul>
+							<?php name_and_position($supervisees, "Community Progams"); ?>
 						</div>
 					</div>
 				</div> <?php //closing tag for tier-3-4 ?>
@@ -85,8 +81,8 @@
 						<div class="col-xs-6 col-sm-7 tier-3 no-children">
 					<?php else : ?>
 						<div class="col-xs-6 col-sm-7 tier-3">
-							<h4><?php echo get_the_title($employee); echo " <a href=\"../#" . $slug . "\"><i class=\"fa fa-info-circle\"></i></a></h4>" ?>
-							<h5><?php echo $job_title ?></h5>
+
+							<?php get_name3($employee, $slug, $job_title); ?>
 					<?php endif; ?>
 							
 						</div>
@@ -96,19 +92,7 @@
 				    	// if Tom's supervisees have their own supervisees (tier4 employees)
 				    	?>
 					    <div class="col-xs-6 col-sm-5 tier-4">
-					    	<?php if ($group_title){
-					    		echo "<h5 class=\"heading group-heading\"> $group_title </h5>";
-				    		} ?>
-					    	<?php foreach ($tier4 as $employee) {
-					    		// gets data for each tier4 employee, outputs info below
-					    		$meta = get_metadata('post', $employee->ID);
-								$position = $meta['employee_title_title'][0];
-							    $slug=$employee->post_name;
-							    $tier5 = get_employees($slug); 
-					    	?>
-								<h4> <?php echo get_the_title($employee) ?> <a href="../#<?php echo $slug ?>"><i class="fa fa-info-circle"></i></a></h4>
-							<?php } ?>
-
+					    	<?php name_and_position($tier4, $group_title); ?>
 					    </div>
 
 					<?php else : ?>
@@ -143,8 +127,7 @@
 			<div class="row branch flex">
 				<div class="col-xs-1 tier-2 flex flex-col empty"></div> <?php // empty column so that non VPs aren't in line with VPs ?>
 				<div class="col-xs-4 tier-2 ">
-					<h3> <?php echo get_the_title($employee);?> <a href="../#<?php echo $slug ?>"> <i class="fa fa-info-circle"></i></a></h3>
-					<h4 class="heading"><?php echo $job_title ?></h4>
+					<?php get_name2($employee, $slug, $job_title); ?>
 				</div>
 				<div class="col-xs-7 tier-3-4">
 
@@ -184,8 +167,7 @@
 						<div class="col-xs-6 col-sm-7 tier-3 empty"> <?php // empty line, so acct assct team leaders go on top of tier 4 ?>
 					<?php else : ?>
 						<div class="col-xs-6 col-sm-7 tier-3">
-							<h4><?php echo get_the_title($employee); echo " <a href=\"../#" . $slug . "\"><i class=\"fa fa-info-circle\"></i></a></h4>" ?>
-							<h5><?php echo $job_title ?></h5>
+							<?php get_name3($employee, $slug, $job_title); ?>
 					<?php endif; ?>
 							
 						</div>
@@ -199,15 +181,8 @@
 					    	<?php endif; ?>
 
 					    	<?php if ($group_title){
-					    		echo "<h5 class=\"heading group-heading\"> $group_title </h5>";
-				    		} ?>
-					    	<?php foreach ($tier4 as $employee) {
-					    		$meta = get_metadata('post', $employee->ID);
-								$position = $meta['employee_title_title'][0];
-							    $slug=$employee->post_name; ?>
-
-								<h4> <?php echo get_the_title($employee) ?> <a href="../#<?php echo $slug ?>"><i class="fa fa-info-circle"></i></a></h4>
-							<?php } ?>
+					    		name_and_position($tier4, $group_title);
+							} ?>
 
 					    </div>
 
