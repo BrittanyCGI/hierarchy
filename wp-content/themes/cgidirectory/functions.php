@@ -555,7 +555,7 @@ add_action( 'save_post', 'contact_information_save' );
 	<?php }; 
 
 
-	function get_name3($employee, $slug, $job_title) { //outputs single name and job title for tier2 and tier3 employees ?>
+	function get_name3($employee, $slug, $job_title) { //outputs single name and job title for tier3 and tier4 employees ?>
 		<h4><?php echo get_the_title($employee);?> <a href="../#<?php echo $slug ?>"><i class="fa fa-info-circle"></i></a></h4>
 		<h5 class="heading"><?php echo $job_title ?></h5>
 	<?php }; 
@@ -585,7 +585,7 @@ add_action( 'save_post', 'contact_information_save' );
 	}
 
 
-	function assc($group, $position_title){ // outsputs row for associates (columns are slightly different sizes, otherwise same as above)
+	function assc($group, $position_title){ // outputs row for associates (columns are slightly different sizes, otherwise same as above)
 		if (!empty($group)) :?>
 			<div class="flex tier-3-4-row">
 				<div class="col-xs-6 col-sm-7 tier-3 empty"></div>
@@ -609,7 +609,6 @@ add_action( 'save_post', 'contact_information_save' );
 			</div>
 		<?php endif; 
 	}
-
 
 
 	function get_employees($slug){ // returns employees by supervisor, in ascending order

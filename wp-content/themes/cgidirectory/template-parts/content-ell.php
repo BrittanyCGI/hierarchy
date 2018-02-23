@@ -43,13 +43,13 @@
 				<?php if ($job_title == 'Researcher') : 
 				// unique role kind of on its own, researchers are lined up at the very bottom tier, so empty div is xs-7
 				?> 
-					
 					<div class="col-xs-7 col-sm-8 tier-2 flex flex-col empty"></div>
 					<div class="col-xs-5 col-sm-4 tier-3-4">
 						<div class="flex tier-3-4-row">
 							<div class="col-xs-12 tier-4 sales-execs">
 								<?php get_name3($employee, $slug, $job_title); ?>
 							</div>
+							<div class="col-xs-0 blank"></div>
 						</div>
 
 				<?php elseif ($job_title == 'Special Projects') : 
@@ -117,7 +117,7 @@
 									</div>
 								</div>
 							
-								<?php endforeach;} ?> <!-- endif sales team leaders + sales assc. section -->
+								<?php endforeach;} //  endif sales team leaders + sales assc. section ?>
 								
 				
 						
